@@ -218,23 +218,40 @@
         <h2>4. Réponse aux besoins du Québec (partie)</h2>
 
         <fieldset>
-            <legend>Diagnostic de main-d’œuvre + expérience dans la profession principale</legend>
-            <label>
-                Diagnostic de la profession principale
-                <select id="diag_code">
-                    <option value="equilibre">Équilibre ou sans diagnostic</option>
-                    <option value="leger_deficit">Léger déficit</option>
-                    <option value="deficit">Déficit</option>
-                </select>
-            </label>
+    <legend>
+        Diagnostic de main-d’œuvre + expérience dans la profession principale
+        <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage" 
+           target="_blank" 
+           style="font-size:0.75rem; margin-left:8px;">
+            📄 Voir tableau officiel
+        </a>
+    </legend>
 
-            <label>
-                Durée d’expérience dans la profession principale (mois, 0–60)
-                <input id="exp_prof" type="number" min="0" max="60" value="24">
-            </label>
-            <small>Référence : Réponse aux besoins du Québec – <strong>a. Diagnostic de main-d’œuvre et durée
-                de l’expérience dans la profession principale exercée</strong> (tableau par diagnostic et durée).</small>
-        </fieldset>
+    <label>
+        Diagnostic de la profession principale
+        <select id="diag_code">
+            <option value="equilibre">Équilibre ou sans diagnostic</option>
+            <option value="leger_deficit">Léger déficit</option>
+            <option value="deficit">Déficit</option>
+        </select>
+    </label>
+
+    <label>
+        Durée d’expérience dans la profession principale (mois, 0–60)
+        <input id="exp_prof" type="number" min="0" max="60" value="24">
+    </label>
+
+    <small>
+        Référence : PSTQ – Réponse aux besoins du Québec, section « Diagnostic de main-d’œuvre
+        et durée de l’expérience dans la profession principale exercée ».
+        <br>
+        Source : 
+        <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage" target="_blank">
+            https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage
+        </a>
+    </small>
+</fieldset>
+
 
         <fieldset>
             <legend>Diplôme du Québec</legend>
@@ -633,4 +650,27 @@
         });
     </script>
 </body>
+
+<footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.8rem; color: #555;">
+    <p><strong>Mentions légales</strong></p>
+    <p>
+        Ce simulateur est un outil non officiel fourni uniquement à titre informatif. 
+        Il n’est ni affilié ni approuvé par le Ministère de l’Immigration, de la 
+        Francisation et de l’Intégration (MIFI) ou tout autre organisme gouvernemental. 
+        Les résultats obtenus ne garantissent en aucun cas une invitation ou une décision 
+        d’immigration officielle.
+    </p>
+    <p>
+        Les barèmes, grilles et critères utilisés proviennent du document 
+        <em>« Pointage – Programme de sélection des travailleurs qualifiés (PSTQ) »</em>, 
+        mis à jour le 2 juillet 2025 et publié sur le site du Gouvernement du Québec : 
+        <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq" 
+           target="_blank">https://www.quebec.ca/immigration/travailler-quebec/pstq</a>.
+    </p>
+    <p>
+        Ce site ne collecte, ne conserve ni ne transmet aucune information personnelle. 
+        L’utilisation de ce simulateur se fait sous la seule responsabilité de l’utilisateur.
+    </p>
+</footer>
+
 </html>
