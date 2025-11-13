@@ -111,6 +111,9 @@
             padding: 0.05rem 0.25rem;
             border-radius: 3px;
         }
+        .spouse-section {
+            display: none;
+        }
     </style>
     </head>
     <body>
@@ -129,7 +132,6 @@
             gouvernement du Québec.
         </div>
 
-        <!-- 1. Informations de base -->
         <div class="card">
             <h2>1. Informations de base</h2>
             <fieldset>
@@ -153,7 +155,6 @@
             </fieldset>
         </div>
 
-        <!-- 2. Français requérant principal -->
         <div class="card">
             <h2>2. Connaissance du français (requérant principal)</h2>
             <fieldset>
@@ -186,9 +187,8 @@
             </fieldset>
         </div>
 
-        <!-- 3. Expérience + scolarité requérant principal -->
         <div class="card">
-            <h2>3. Expérience de travail et scolarité (requérant principal)</h2>
+            <h2>3. Expérience de travail et scolarité</h2>
             <fieldset>
                 <legend>Expérience totale (5 dernières années)</legend>
                 <label>
@@ -203,7 +203,7 @@
             <fieldset>
                 <legend>Niveau de scolarité</legend>
                 <label for="edu_code">
-                    Niveau de scolarité (choisissez le plus avantageux)
+                    Niveau de scolarité (choisis le plus avantageux)
                 </label>
                 <select id="edu_code">
                     <option value="sec_gen">Secondaire général complété</option>
@@ -238,124 +238,14 @@
                     <option value="uni_3e">Universitaire 3e cycle</option>
                 </select>
                 <small>Référence : Capital humain – <strong>d. Niveau de
-                        scolarité</strong> (tableau « Niveau de
-                    scolarité », max 130 / 110).</small>
+                        scolarité</strong>.
+                    Les valeurs exactes sont celles du tableau « Niveau de
+                    scolarité » (max 130 / 110).</small>
             </fieldset>
         </div>
 
-        <!-- 4. Informations sur le conjoint (affichage conditionnel) -->
-        <div class="card" id="card-conjoint" style="display:none;">
-            <h2>4. Informations concernant le conjoint</h2>
-            <p style="font-size:0.9rem;">
-                Cette section est pertinente seulement si vous avez sélectionné
-                <strong>« Avec conjoint »</strong> dans la situation familiale.
-            </p>
-
-            <fieldset>
-                <legend>Conjoint – connaissance du français</legend>
-
-                <label>
-                    Compréhension orale (Échelle québécoise 1–12)
-                    <input id="conj_fr_co" type="number" min="1" max="12"
-                        value="10">
-                </label>
-
-                <label>
-                    Production orale (Échelle québécoise 1–12)
-                    <input id="conj_fr_po" type="number" min="1" max="12"
-                        value="10">
-                </label>
-
-                <label>
-                    Compréhension écrite (Échelle québécoise 1–12)
-                    <input id="conj_fr_ce" type="number" min="1" max="12"
-                        value="10">
-                </label>
-
-                <label>
-                    Production écrite (Échelle québécoise 1–12)
-                    <input id="conj_fr_pe" type="number" min="1" max="12"
-                        value="10">
-                </label>
-
-                <small>
-                    Référence : Facteurs liés au conjoint – connaissance du
-                    français.
-                    Barèmes détaillés :
-                    <a
-                        href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
-                        target="_blank">PSTQ – pointage officiel</a>.
-                </small>
-            </fieldset>
-
-            <fieldset>
-                <legend>Conjoint – niveau de scolarité</legend>
-                <label>
-                    Niveau de scolarité du conjoint
-                    <select id="conj_edu_code">
-                        <option value>(Aucun / non déclaré)</option>
-                        <option value="sec_gen">Secondaire général
-                            complété</option>
-                        <option value="sec_prof_QC_600_899h">Secondaire
-                            professionnel 600–899h (Qc)</option>
-                        <option value="sec_prof_QC_900h_plus">Secondaire
-                            professionnel ≥ 900h (Qc)</option>
-                        <option value="sec_prof_horsQC_1an_plus">Secondaire
-                            professionnel ≥ 1 an (hors Qc)</option>
-                        <option value="postsec_gen_2ans">Postsecondaire général
-                            2
-                            ans</option>
-                        <option value="postsec_tech_QC_900h_plus">Postsecondaire
-                            technique ≥ 900h (Qc)</option>
-                        <option
-                            value="postsec_tech_horsQC_1_2ans">Postsecondaire
-                            technique 1–2 ans (hors Qc)</option>
-                        <option value="postsec_tech_3ans">Postsecondaire
-                            technique 3 ans</option>
-                        <option value="uni_1er_1an">Universitaire 1er cycle 1
-                            an</option>
-                        <option value="uni_1er_2ans">Universitaire 1er cycle 2
-                            ans</option>
-                        <option value="uni_1er_3_4ans">Universitaire 1er cycle
-                            3–4
-                            ans</option>
-                        <option value="uni_1er_5ans_plus">Universitaire 1er
-                            cycle 5
-                            ans ou plus</option>
-                        <option value="uni_2e_1an">Universitaire 2e cycle 1
-                            an</option>
-                        <option value="uni_2e_2ans_plus">Universitaire 2e cycle
-                            ≥ 2
-                            ans</option>
-                        <option value="uni_med_2ans_plus">Universitaire
-                            spécialisation médicale ≥ 2 ans</option>
-                        <option value="uni_3e">Universitaire 3e cycle</option>
-                    </select>
-                </label>
-                <small>
-                    Référence : Facteurs liés au conjoint – scolarité.
-                    Voir barèmes PSTQ pour la pondération exacte.
-                </small>
-            </fieldset>
-
-            <fieldset>
-                <legend>Conjoint – expérience de travail au Québec</legend>
-                <label>
-                    Durée d’expérience de travail au Québec (mois, 0–60)
-                    <input id="conj_exp_qc" type="number" min="0" max="60"
-                        value="0">
-                </label>
-                <small>
-                    Référence : Facteurs d’adaptation – expérience de travail au
-                    Québec du conjoint.
-                    Barèmes détaillés dans les tableaux PSTQ.
-                </small>
-            </fieldset>
-        </div>
-
-        <!-- 5. Réponse aux besoins du Québec -->
         <div class="card">
-            <h2>5. Réponse aux besoins du Québec (partie)</h2>
+            <h2>4. Réponse aux besoins du Québec (partie)</h2>
 
             <fieldset>
                 <legend>Diagnostic de main-d’œuvre + expérience dans la
@@ -376,14 +266,11 @@
                     <input id="exp_prof" type="number" min="0" max="60"
                         value="24">
                 </label>
-                <small>
-                    Référence : Réponse aux besoins du Québec – <strong>a.
+                <small>Référence : Réponse aux besoins du Québec – <strong>a.
                         Diagnostic de main-d’œuvre et durée
                         de l’expérience dans la profession principale
-                        exercée</strong>.
-                    Voir le tableau détaillé dans le document PSTQ (diagnostic ×
-                    durée).
-                </small>
+                        exercée</strong> (tableau par diagnostic et
+                    durée).</small>
             </fieldset>
 
             <fieldset>
@@ -484,6 +371,172 @@
             </fieldset>
         </div>
 
+        <!-- 5. Facteurs d’adaptation – Conjoint -->
+        <div class="card spouse-section" id="spouse-card">
+            <h2>5. Facteurs d’adaptation – conjoint(e)</h2>
+
+            <fieldset>
+                <legend>Parenté au Québec</legend>
+                <label>
+                    Membre de la parenté au Québec
+                    <select id="parente">
+                        <option value="aucune">Aucun</option>
+                        <option value="lie_ress">Membre de la parenté lié au
+                            requérant principal</option>
+                        <option value="lie_conj">Membre de la parenté lié au
+                            conjoint</option>
+                    </select>
+                </label>
+                <small>Référence : Facteurs d’adaptation – <strong>b. Membre de
+                        la parenté au Québec</strong> (10 pts si lié au
+                    requérant, 5 pts si lié au conjoint).</small>
+            </fieldset>
+
+            <fieldset>
+                <legend>Français du conjoint – Échelle québécoise
+                    (1–12)</legend>
+
+                <label>
+                    Compréhension orale (conjoint)
+                    <input id="sc_fr_co" type="number" min="1" max="12"
+                        value="9">
+                </label>
+
+                <label>
+                    Production orale (conjoint)
+                    <input id="sc_fr_po" type="number" min="1" max="12"
+                        value="9">
+                </label>
+
+                <label>
+                    Compréhension écrite (conjoint)
+                    <input id="sc_fr_ce" type="number" min="1" max="12"
+                        value="9">
+                </label>
+
+                <label>
+                    Production écrite (conjoint)
+                    <input id="sc_fr_pe" type="number" min="1" max="12"
+                        value="9">
+                </label>
+
+                <small>Référence : Facteurs d’adaptation – <strong>c.
+                        Connaissance du français de l’époux ou conjoint de
+                        fait</strong> (max 10 pts par compétence).</small>
+            </fieldset>
+
+            <fieldset>
+                <legend>Âge du conjoint</legend>
+                <label>
+                    Âge du conjoint (en années)
+                    <input id="sc_age" type="number" min="16" max="99"
+                        value="28">
+                </label>
+                <small>Référence : Facteurs d’adaptation – <strong>d. Âge de
+                        l’époux ou conjoint de fait</strong> (max 20
+                    pts).</small>
+            </fieldset>
+
+            <fieldset>
+                <legend>Expérience de travail du conjoint au Québec</legend>
+                <label>
+                    Durée d’expérience de travail au Québec du conjoint (mois,
+                    0–60)
+                    <input id="sc_exp_qc" type="number" min="0" max="60"
+                        value="0">
+                </label>
+                <small>Référence : Facteurs d’adaptation – <strong>e. Durée de
+                        l’expérience de travail de l’époux ou conjoint de fait
+                        au Québec</strong> (max 30 pts).</small>
+            </fieldset>
+
+            <fieldset>
+                <legend>Scolarité du conjoint</legend>
+                <label>
+                    Niveau de scolarité du conjoint
+                    <select id="sc_edu_code">
+                        <option value="sec_gen">Secondaire général
+                            complété</option>
+                        <option value="sec_prof_QC_600_899h">Secondaire
+                            professionnel 600–899h (Qc)</option>
+                        <option value="sec_prof_QC_900h_plus">Secondaire
+                            professionnel ≥ 900h (Qc)</option>
+                        <option value="sec_prof_horsQC_1an_plus">Secondaire
+                            professionnel ≥ 1 an (hors Qc)</option>
+                        <option value="postsec_gen_2ans">Postsecondaire général
+                            2 ans</option>
+                        <option value="postsec_tech_QC_900h_plus">Postsecondaire
+                            technique ≥ 900h (Qc)</option>
+                        <option
+                            value="postsec_tech_horsQC_1_2ans">Postsecondaire
+                            technique 1–2 ans (hors Qc)</option>
+                        <option value="postsec_tech_3ans">Postsecondaire
+                            technique 3 ans</option>
+                        <option value="uni_1er_1an">Universitaire 1er cycle 1
+                            an</option>
+                        <option value="uni_1er_2ans">Universitaire 1er cycle 2
+                            ans</option>
+                        <option value="uni_1er_3_4ans" selected>Universitaire
+                            1er cycle 3–4 ans</option>
+                        <option value="uni_1er_5ans_plus">Universitaire 1er
+                            cycle 5 ans ou plus</option>
+                        <option value="uni_2e_1an">Universitaire 2e cycle 1
+                            an</option>
+                        <option value="uni_2e_2ans_plus">Universitaire 2e cycle
+                            ≥ 2 ans</option>
+                        <option value="uni_med_2ans_plus">Universitaire
+                            spécialisation médicale ≥ 2 ans</option>
+                        <option value="uni_3e">Universitaire 3e cycle</option>
+                    </select>
+                </label>
+                <small>Référence : Facteurs d’adaptation – <strong>f. Niveau de
+                        scolarité de l’époux ou conjoint de fait</strong> (max
+                    20 pts).</small>
+            </fieldset>
+
+            <fieldset>
+                <legend>Diplôme du Québec – conjoint</legend>
+                <label>
+                    Diplôme du Québec du conjoint
+                    <select id="sc_dipqc_code">
+                        <option value>Aucun diplôme du Québec</option>
+                        <option value="dipqc_sec_gen">Secondaire général
+                            complété (Qc)</option>
+                        <option value="dipqc_sec_prof_600_899h">Secondaire
+                            professionnel 600–899h (Qc)</option>
+                        <option value="dipqc_sec_prof_900h_plus">Secondaire
+                            professionnel ≥ 900h (Qc)</option>
+                        <option value="dipqc_postsec_gen_2ans">Postsecondaire
+                            général 2 ans (Qc)</option>
+                        <option
+                            value="dipqc_postsec_tech_900h_plus">Postsecondaire
+                            technique ≥ 900h (Qc)</option>
+                        <option value="dipqc_postsec_tech_3ans">Postsecondaire
+                            technique 3 ans (Qc)</option>
+                        <option value="dipqc_uni_1er_1an">Universitaire 1er
+                            cycle 1 an (Qc)</option>
+                        <option value="dipqc_uni_1er_2ans">Universitaire 1er
+                            cycle 2 ans (Qc)</option>
+                        <option value="dipqc_uni_1er_3_4ans">Universitaire 1er
+                            cycle 3–4 ans (Qc)</option>
+                        <option value="dipqc_uni_1er_5ans_plus">Universitaire
+                            1er cycle 5 ans ou plus (Qc)</option>
+                        <option value="dipqc_uni_2e_1an">Universitaire 2e cycle
+                            1 an (Qc)</option>
+                        <option value="dipqc_uni_2e_2ans_plus">Universitaire 2e
+                            cycle ≥ 2 ans (Qc)</option>
+                        <option value="dipqc_uni_med_2ans_plus">Universitaire
+                            spécialisation médicale ≥ 2 ans (Qc)</option>
+                        <option value="dipqc_uni_3e">Universitaire 3e cycle
+                            (Qc)</option>
+                    </select>
+                </label>
+                <small>Référence : Facteurs d’adaptation – <strong>g. Diplôme du
+                        Québec de l’époux ou conjoint de fait</strong> (max 30
+                    pts).</small>
+            </fieldset>
+        </div>
+
         <div class="card">
             <button id="btn_calc">Calculer le pointage</button>
         </div>
@@ -506,7 +559,7 @@
                         <td>Total capital humain (simplifié)</td>
                         <td id="total_capital">0</td>
                         <td>Somme : français + âge + expérience totale +
-                            scolarité (requérant principal).</td>
+                            scolarité.</td>
                     </tr>
                     <tr class="total">
                         <td>Total réponse aux besoins du Québec (partiel)</td>
@@ -515,16 +568,15 @@
                             résidence hors CMM, offre, autorisation.</td>
                     </tr>
                     <tr class="total">
-                        <td>Sous-total conjoint (indicatif)</td>
+                        <td>Total facteurs d’adaptation – conjoint(e)</td>
                         <td id="total_conjoint">0</td>
-                        <td>Français + scolarité + expérience au Québec du
-                            conjoint
-                            (approximation, à valider avec les barèmes
-                            officiels).</td>
+                        <td>Somme : parenté, français conjoint, âge conjoint,
+                            expérience travail conjoint au Québec, scolarité et
+                            diplôme du Québec.</td>
                     </tr>
                     <tr class="total">
-                        <td>Pointage total (sans facteurs d’adaptation
-                            complets)</td>
+                        <td>Pointage total (incluant conjoint, sans autres
+                            facteurs)</td>
                         <td id="total_global">0</td>
                         <td>À titre indicatif – ne remplace pas le calcul du
                             MIFI.</td>
@@ -534,7 +586,7 @@
         </div>
 
         <script>
-        // --- Tables de référence (extraites / simplifiées du PSTQ 2 juillet 2025) ---
+        // --- Tables de référence (extraites du PDF PSTQ 2 juillet 2025) ---
 
         const FRENCH_TABLE = [
             {min: 1, max: 4, seul: 0, conjoint: 0},
@@ -639,20 +691,95 @@
 
         const RES_HORS_TABLE = [
             {min: 0, max: 5, pts: 0},
-            {min: 6, max: 11, pts: 3},
-            {min: 12, max: 23, pts: 8},
-            {min: 24, max: 35, pts: 12},
-            {min: 36, max: 47, pts: 16},
-            {min: 48, max: 240, pts: 20},
+            {min: 6, max: 11, pts: 6},
+            {min: 12, max: 23, pts: 16},
+            {min: 24, max: 35, pts: 24},
+            {min: 36, max: 47, pts: 32},
+            {min: 48, max: 240, pts: 40},
         ];
 
         const OFFRE_TABLE = {
             "aucune": 0,
-            "dans_CMM": 0,
+            "dans_CMM": 30,
             "hors_CMM": 50
         };
 
-        // --- Utilitaires ---
+        // --- Conjoint : tables spécifiques ---
+
+        const SPOUSE_FRENCH_TABLE = [
+            {min: 1, max: 3, pts: 0},
+            {min: 4, max: 4, pts: 4},
+            {min: 5, max: 6, pts: 6},
+            {min: 7, max: 8, pts: 8},
+            {min: 9, max: 12, pts: 10},
+        ];
+
+        const SPOUSE_AGE_TABLE = [
+            {min: 16, max: 19, pts: 18},
+            {min: 20, max: 30, pts: 20},
+            {min: 31, max: 31, pts: 18},
+            {min: 32, max: 32, pts: 17},
+            {min: 33, max: 33, pts: 16},
+            {min: 34, max: 34, pts: 15},
+            {min: 35, max: 35, pts: 14},
+            {min: 36, max: 36, pts: 12},
+            {min: 37, max: 37, pts: 10},
+            {min: 38, max: 38, pts: 8},
+            {min: 39, max: 39, pts: 7},
+            {min: 40, max: 40, pts: 6},
+            {min: 41, max: 41, pts: 5},
+            {min: 42, max: 42, pts: 4},
+            {min: 43, max: 43, pts: 3},
+            {min: 44, max: 44, pts: 2},
+            {min: 45, max: 120, pts: 0},
+        ];
+
+        const SPOUSE_EXP_QC_TABLE = [
+            {min: 0, max: 5, pts: 0},
+            {min: 6, max: 11, pts: 5},
+            {min: 12, max: 23, pts: 10},
+            {min: 24, max: 35, pts: 15},
+            {min: 36, max: 47, pts: 23},
+            {min: 48, max: 60, pts: 30},
+        ];
+
+        const SPOUSE_EDU_TABLE = {
+            "sec_gen": 2,
+            "sec_prof_QC_600_899h": 2,
+            "sec_prof_QC_900h_plus": 4,
+            "sec_prof_horsQC_1an_plus": 4,
+            "postsec_gen_2ans": 6,
+            "postsec_tech_QC_900h_plus": 8,
+            "postsec_tech_horsQC_1_2ans": 8,
+            "postsec_tech_3ans": 12,
+            "uni_1er_1an": 12,
+            "uni_1er_2ans": 14,
+            "uni_1er_3_4ans": 16,
+            "uni_1er_5ans_plus": 17,
+            "uni_2e_1an": 17,
+            "uni_2e_2ans_plus": 18,
+            "uni_med_2ans_plus": 20,
+            "uni_3e": 20,
+        };
+
+        const SPOUSE_DIPQC_TABLE = {
+            "dipqc_sec_gen": 3,
+            "dipqc_sec_prof_600_899h": 3,
+            "dipqc_sec_prof_900h_plus": 6,
+            "dipqc_postsec_gen_2ans": 9,
+            "dipqc_postsec_tech_900h_plus": 12,
+            "dipqc_postsec_tech_3ans": 18,
+            "dipqc_uni_1er_1an": 18,
+            "dipqc_uni_1er_2ans": 21,
+            "dipqc_uni_1er_3_4ans": 24,
+            "dipqc_uni_1er_5ans_plus": 25,
+            "dipqc_uni_2e_1an": 25,
+            "dipqc_uni_2e_2ans_plus": 27,
+            "dipqc_uni_med_2ans_plus": 30,
+            "dipqc_uni_3e": 30,
+        };
+
+        // --- Fonctions utilitaires ---
 
         function isConjoint(famille) {
             return famille === "Avec conjoint";
@@ -662,6 +789,15 @@
             for (const row of table) {
                 if (value >= row.min && value <= row.max) {
                     return hasConjoint ? row[fieldConjoint] : row[fieldSeul];
+                }
+            }
+            return 0;
+        }
+
+        function getRangePointsSimple(table, value) {
+            for (const row of table) {
+                if (value >= row.min && value <= row.max) {
+                    return row.pts;
                 }
             }
             return 0;
@@ -703,17 +839,11 @@
         }
 
         function getExpQcPoints(mois) {
-            for (const row of EXP_QC_TABLE) {
-                if (mois >= row.min && mois <= row.max) return row.pts;
-            }
-            return 0;
+            return getRangePointsSimple(EXP_QC_TABLE, mois);
         }
 
         function getResHorsPoints(mois) {
-            for (const row of RES_HORS_TABLE) {
-                if (mois >= row.min && mois <= row.max) return row.pts;
-            }
-            return 0;
+            return getRangePointsSimple(RES_HORS_TABLE, mois);
         }
 
         function getOffrePoints(code) {
@@ -724,27 +854,53 @@
             return yesNo === "oui" ? 50 : 0;
         }
 
-        // --- Affichage dynamique de la section conjoint ---
+        // Conjoint
+        function getSpouseFrenchPoints(level) {
+            return getRangePointsSimple(SPOUSE_FRENCH_TABLE, level);
+        }
+
+        function getSpouseAgePoints(age) {
+            return getRangePointsSimple(SPOUSE_AGE_TABLE, age);
+        }
+
+        function getSpouseExpQcPoints(mois) {
+            return getRangePointsSimple(SPOUSE_EXP_QC_TABLE, mois);
+        }
+
+        function getSpouseEduPoints(code) {
+            if (!code) return 0;
+            return SPOUSE_EDU_TABLE[code] || 0;
+        }
+
+        function getSpouseDipQcPoints(code) {
+            if (!code) return 0;
+            return SPOUSE_DIPQC_TABLE[code] || 0;
+        }
+
+        function getParentePoints(code) {
+            if (code === "lie_ress") return 10;
+            if (code === "lie_conj") return 5;
+            return 0;
+        }
+
+        // --- Affichage / masquage conjoint ---
 
         const familleSelect = document.getElementById("famille");
-        const conjointCard = document.getElementById("card-conjoint");
+        const spouseCard = document.getElementById("spouse-card");
 
-        function updateConjointVisibility() {
-            if (familleSelect.value === "Avec conjoint") {
-                conjointCard.style.display = "block";
-            } else {
-                conjointCard.style.display = "none";
-            }
+        function updateSpouseVisibility() {
+            if (!spouseCard) return;
+            spouseCard.style.display = familleSelect.value === "Avec conjoint" ? "block" : "none";
         }
-        updateConjointVisibility();
-        familleSelect.addEventListener("change", updateConjointVisibility);
+
+        familleSelect.addEventListener("change", updateSpouseVisibility);
+        updateSpouseVisibility();
 
         // --- Calcul principal ---
 
         document.getElementById("btn_calc").addEventListener("click", () => {
             const famille = document.getElementById("famille").value;
-            const conjointPresent = isConjoint(famille);
-
+            const hasConjoint = isConjoint(famille);
             const age = Number(document.getElementById("age").value || 0);
 
             const fr_co = Number(document.getElementById("fr_co").value || 0);
@@ -765,15 +921,24 @@
             const offre = document.getElementById("offre").value;
             const autorisation = document.getElementById("autorisation").value;
 
-            // Données conjoint
-            const conj_fr_co = Number(document.getElementById("conj_fr_co").value || 0);
-            const conj_fr_po = Number(document.getElementById("conj_fr_po").value || 0);
-            const conj_fr_ce = Number(document.getElementById("conj_fr_ce").value || 0);
-            const conj_fr_pe = Number(document.getElementById("conj_fr_pe").value || 0);
-            const conj_edu_code = document.getElementById("conj_edu_code").value;
-            const conj_exp_qc = Number(document.getElementById("conj_exp_qc").value || 0);
+            // Conjoint (si applicable)
+            let sc_fr_co = 0, sc_fr_po = 0, sc_fr_ce = 0, sc_fr_pe = 0;
+            let sc_age = 0, sc_exp_qc = 0, sc_edu_code = "", sc_dipqc_code = "", sc_parente = "aucune";
 
-            // Requérant principal
+            if (hasConjoint) {
+                sc_fr_co = Number(document.getElementById("sc_fr_co").value || 0);
+                sc_fr_po = Number(document.getElementById("sc_fr_po").value || 0);
+                sc_fr_ce = Number(document.getElementById("sc_fr_ce").value || 0);
+                sc_fr_pe = Number(document.getElementById("sc_fr_pe").value || 0);
+
+                sc_age = Number(document.getElementById("sc_age").value || 0);
+                sc_exp_qc = Number(document.getElementById("sc_exp_qc").value || 0);
+                sc_edu_code = document.getElementById("sc_edu_code").value;
+                sc_dipqc_code = document.getElementById("sc_dipqc_code").value;
+                sc_parente = document.getElementById("parente").value;
+            }
+
+            // Calculs requérant principal
             const pts_fr_co = getFrenchPoints(fr_co, famille);
             const pts_fr_po = getFrenchPoints(fr_po, famille);
             const pts_fr_ce = getFrenchPoints(fr_ce, famille);
@@ -793,22 +958,30 @@
 
             const total_capital = total_fr + pts_age + pts_exp_total + pts_edu;
             const total_besoins = pts_diag + pts_dipqc + pts_exp_qc + pts_res_hors + pts_offre + pts_autorisation;
-            const total_global = total_capital + total_besoins;
 
-            // Conjoint – sous-total indicatif
+            // Calculs conjoint
             let total_conjoint = 0;
-            if (conjointPresent) {
-                const conj_pts_fr_co = getFrenchPoints(conj_fr_co, "Avec conjoint");
-                const conj_pts_fr_po = getFrenchPoints(conj_fr_po, "Avec conjoint");
-                const conj_pts_fr_ce = getFrenchPoints(conj_fr_ce, "Avec conjoint");
-                const conj_pts_fr_pe = getFrenchPoints(conj_fr_pe, "Avec conjoint");
-                const conj_total_fr = conj_pts_fr_co + conj_pts_fr_po + conj_pts_fr_ce + conj_pts_fr_pe;
+            let spouse_fr_total = 0, spouse_age_pts = 0, spouse_exp_qc_pts = 0,
+                spouse_edu_pts = 0, spouse_dipqc_pts = 0, parente_pts = 0;
 
-                const conj_pts_edu = conj_edu_code ? getEducationPoints(conj_edu_code, "Avec conjoint") : 0;
-                const conj_pts_exp_qc = getExpQcPoints(conj_exp_qc);
+            if (hasConjoint) {
+                const sc_pts_fr_co = getSpouseFrenchPoints(sc_fr_co);
+                const sc_pts_fr_po = getSpouseFrenchPoints(sc_fr_po);
+                const sc_pts_fr_ce = getSpouseFrenchPoints(sc_fr_ce);
+                const sc_pts_fr_pe = getSpouseFrenchPoints(sc_fr_pe);
+                spouse_fr_total = sc_pts_fr_co + sc_pts_fr_po + sc_pts_fr_ce + sc_pts_fr_pe;
 
-                total_conjoint = conj_total_fr + conj_pts_edu + conj_pts_exp_qc;
+                spouse_age_pts = getSpouseAgePoints(sc_age);
+                spouse_exp_qc_pts = getSpouseExpQcPoints(sc_exp_qc);
+                spouse_edu_pts = getSpouseEduPoints(sc_edu_code);
+                spouse_dipqc_pts = getSpouseDipQcPoints(sc_dipqc_code);
+                parente_pts = getParentePoints(sc_parente);
+
+                total_conjoint = spouse_fr_total + spouse_age_pts + spouse_exp_qc_pts +
+                                 spouse_edu_pts + spouse_dipqc_pts + parente_pts;
             }
+
+            const total_global = total_capital + total_besoins + total_conjoint;
 
             // Affichage
             const tbody = document.querySelector("#results-table tbody");
@@ -828,6 +1001,7 @@
                 tbody.appendChild(tr);
             }
 
+            // Requérant principal
             addRow("Français – 4 compétences (requérant principal)", total_fr,
                 "Capital humain – a. Connaissance du français (4 compétences, maximum 50 points chacune).");
 
@@ -837,16 +1011,8 @@
             addRow("Durée totale de l’expérience de travail", pts_exp_total,
                 "Capital humain – c. Durée de l’expérience de travail (5 dernières années).");
 
-            addRow("Niveau de scolarité (requérant principal)", pts_edu,
+            addRow("Niveau de scolarité", pts_edu,
                 "Capital humain – d. Niveau de scolarité (tableau « Niveau de scolarité », max 130 / 110).");
-
-            if (conjointPresent) {
-                addRow(
-                    "Conjoint – français + scolarité + expérience au Québec (sous-total indicatif)",
-                    total_conjoint,
-                    "Facteurs liés au conjoint – barèmes complets à vérifier dans le document PSTQ."
-                );
-            }
 
             addRow("Diagnostic de main-d’œuvre + durée d’expérience dans la profession principale", pts_diag,
                 "Réponse aux besoins du Québec – a. Diagnostic de main-d’œuvre et durée de l’expérience dans la profession principale exercée.");
@@ -866,12 +1032,33 @@
             addRow("Autorisation d’exercer / reconnaissance de l’ordre professionnel", pts_autorisation,
                 "Réponse aux besoins du Québec – f. Autorisation d’exercer la profession principale ou reconnaissance (50 points).");
 
+            // Conjoint : n’afficher que si présent
+            if (hasConjoint) {
+                addRow("Parenté au Québec (lié au requérant ou au conjoint)", parente_pts,
+                    "Facteurs d’adaptation – b. Membre de la parenté au Québec.");
+
+                addRow("Français – 4 compétences (conjoint)", spouse_fr_total,
+                    "Facteurs d’adaptation – c. Connaissance du français de l’époux ou conjoint de fait.");
+
+                addRow("Âge du conjoint", spouse_age_pts,
+                    "Facteurs d’adaptation – d. Âge de l’époux ou conjoint de fait.");
+
+                addRow("Expérience de travail du conjoint au Québec", spouse_exp_qc_pts,
+                    "Facteurs d’adaptation – e. Durée de l’expérience de travail de l’époux ou conjoint de fait au Québec.");
+
+                addRow("Niveau de scolarité du conjoint", spouse_edu_pts,
+                    "Facteurs d’adaptation – f. Niveau de scolarité de l’époux ou conjoint de fait.");
+
+                addRow("Diplôme du Québec du conjoint", spouse_dipqc_pts,
+                    "Facteurs d’adaptation – g. Diplôme du Québec de l’époux ou conjoint de fait.");
+            }
+
             document.getElementById("total_capital").textContent = total_capital;
             document.getElementById("total_besoins").textContent = total_besoins;
-            document.getElementById("total_conjoint").textContent = conjointPresent ? total_conjoint : 0;
+            document.getElementById("total_conjoint").textContent = total_conjoint;
             document.getElementById("total_global").textContent = total_global;
         });
-        </script>
+    </script>
     </body>
     <footer
         style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.8rem; color: #555;">
