@@ -241,38 +241,49 @@
             </fieldset>
         </div>
 
-        <!-- 4. Bloc conjoint -->
+        <!-- NOUVELLE CARTE : Informations sur le conjoint -->
         <div class="card">
             <h2>4. Informations sur le conjoint (optionnel)</h2>
             <p style="font-size:0.9rem;">
-                Si vous choisissez <strong>« Avec conjoint »</strong> dans la situation
-                familiale, vous pouvez remplir ces champs pour estimer
-                la contribution potentielle du conjoint (français, scolarité, expérience au Québec).
+                Si vous avez sélectionné <strong>« Avec conjoint »</strong>,
+                vous pouvez remplir
+                ces informations pour obtenir un sous-total indicatif pour le
+                conjoint.
+                Dans cette version, ce sous-total n’est pas encore intégré au
+                pointage global.
             </p>
 
             <fieldset>
                 <legend>Conjoint – connaissance du français</legend>
                 <label>
                     Compréhension orale (Échelle québécoise 1–12)
-                    <input id="conj_fr_co" type="number" min="1" max="12" value="10">
+                    <input id="conj_fr_co" type="number" min="1" max="12"
+                        value="10">
                 </label>
                 <label>
                     Production orale (Échelle québécoise 1–12)
-                    <input id="conj_fr_po" type="number" min="1" max="12" value="10">
+                    <input id="conj_fr_po" type="number" min="1" max="12"
+                        value="10">
                 </label>
                 <label>
                     Compréhension écrite (Échelle québécoise 1–12)
-                    <input id="conj_fr_ce" type="number" min="1" max="12" value="10">
+                    <input id="conj_fr_ce" type="number" min="1" max="12"
+                        value="10">
                 </label>
                 <label>
                     Production écrite (Échelle québécoise 1–12)
-                    <input id="conj_fr_pe" type="number" min="1" max="12" value="10">
+                    <input id="conj_fr_pe" type="number" min="1" max="12"
+                        value="10">
                 </label>
                 <small>
-                    Référence : Facteurs liés au conjoint – connaissance du français.
-                    Voir les tableaux officiels :
-                    <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
-                       target="_blank">PSTQ – barèmes détaillés</a>.
+                    Référence : Capital humain / facteurs d’adaptation –
+                    connaissance du français du conjoint.
+                    Barèmes complets :
+                    <a
+                        href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
+                        target="_blank">
+                        tableaux officiels du PSTQ
+                    </a>.
                 </small>
             </fieldset>
 
@@ -282,7 +293,7 @@
                     Niveau de scolarité du conjoint
                 </label>
                 <select id="conj_edu_code">
-                    <option value="">(Aucun / non déclaré)</option>
+                    <option value>(Aucun / non déclaré)</option>
                     <option value="sec_gen">Secondaire général complété</option>
                     <option value="sec_prof_QC_600_899h">Secondaire
                         professionnel 600–899h (Qc)</option>
@@ -315,22 +326,30 @@
                     <option value="uni_3e">Universitaire 3e cycle</option>
                 </select>
                 <small>
-                    Référence : Facteurs d’adaptation – scolarité du conjoint.
-                    Détails dans les tableaux officiels du PSTQ.
+                    Référence : Capital humain / facteurs d’adaptation –
+                    scolarité du conjoint.
+                    Les valeurs exactes figurent dans les tableaux officiels du
+                    PSTQ.
                 </small>
             </fieldset>
 
             <fieldset>
                 <legend>Conjoint – expérience de travail au Québec</legend>
                 <label>
-                    Durée d’expérience de travail au Québec du conjoint (mois, 0–60)
-                    <input id="conj_exp_qc" type="number" min="0" max="60" value="0">
+                    Durée d’expérience de travail au Québec du conjoint (mois,
+                    0–60)
+                    <input id="conj_exp_qc" type="number" min="0" max="60"
+                        value="0">
                 </label>
                 <small>
-                    Référence : Facteurs d’adaptation – expérience de travail au Québec du conjoint.
-                    Voir :
-                    <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
-                       target="_blank">PSTQ – section facteurs d’adaptation</a>.
+                    Référence : Facteurs d’adaptation – expérience de travail au
+                    Québec du conjoint.
+                    Barèmes exacts :
+                    <a
+                        href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
+                        target="_blank">
+                        PSTQ – section facteurs d’adaptation
+                    </a>.
                 </small>
             </fieldset>
         </div>
@@ -340,7 +359,14 @@
 
             <fieldset>
                 <legend>Diagnostic de main-d’œuvre + expérience dans la
-                    profession principale</legend>
+                    profession principale
+                    <a
+                        href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
+                        target="_blank"
+                        style="font-size:0.75rem; margin-left:8px;">
+                        📄 Voir tableau officiel
+                    </a>
+                </legend>
                 <label>
                     Diagnostic de la profession principale
                     <select id="diag_code">
@@ -361,7 +387,13 @@
                         Diagnostic de main-d’œuvre et durée
                         de l’expérience dans la profession principale
                         exercée</strong> (tableau par diagnostic et
-                    durée).</small>
+                    durée). Source :
+                    <a
+                        href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
+                        target="_blank">
+                        https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage
+                    </a>.
+                </small>
             </fieldset>
 
             <fieldset>
@@ -493,10 +525,11 @@
                             résidence hors CMM, offre, autorisation.</td>
                     </tr>
                     <tr class="total">
-                        <td>Sous-total conjoint (indicatif)</td>
+                        <td>Sous-total conjoint (indicatif, non inclus)</td>
                         <td id="total_conjoint">0</td>
-                        <td>Français + scolarité + expérience au Québec du conjoint
-                            (approximation, à valider avec les barèmes officiels).</td>
+                        <td>Français + scolarité + expérience au Québec du
+                            conjoint (approx., à valider avec les tableaux
+                            officiels).</td>
                     </tr>
                     <tr class="total">
                         <td>Pointage total (sans facteurs d’adaptation)</td>
@@ -507,6 +540,56 @@
                 </tfoot>
             </table>
         </div>
+
+        <footer
+            style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.8rem; color: #555;">
+            <p><strong>Mentions légales</strong></p>
+            <p>
+                Ce simulateur est un outil non officiel fourni uniquement à
+                titre
+                informatif.
+                Il n’est ni affilié ni approuvé par le Ministère de
+                l’Immigration,
+                de la
+                Francisation et de l’Intégration (MIFI) ou tout autre organisme
+                gouvernemental.
+                Les résultats obtenus ne garantissent en aucun cas une
+                invitation ou
+                une décision
+                d’immigration officielle.
+            </p>
+            <p>
+                Les barèmes, grilles et critères utilisés proviennent du
+                document
+                <em>« Pointage – Programme de sélection des travailleurs
+                    qualifiés
+                    (PSTQ) »</em>,
+                mis à jour le 2 juillet 2025 et publié sur le site du
+                Gouvernement
+                du Québec :
+                <a
+                    href="https://www.quebec.ca/immigration/travailler-quebec/pstq"
+                    target="_blank">https://www.quebec.ca/immigration/travailler-quebec/pstq</a>.
+            </p>
+            <p>
+                La présente version du simulateur prend en compte l’impact de la
+                présence d’un <strong>époux ou conjoint de fait</strong> sur
+                certains
+                barèmes du requérant principal (âge, français, expérience,
+                scolarité),
+                et affiche un sous-total indicatif pour le conjoint. Pour une
+                évaluation complète, veuillez toujours vous
+                référer aux tableaux officiels du PSTQ.
+            </p>
+            <p>
+                Ce site ne collecte, ne conserve ni ne transmet aucune
+                information
+                personnelle.
+                L’utilisation de ce simulateur se fait sous la seule
+                responsabilité
+                de l’utilisateur.
+            </p>
+        </footer>
 
         <script>
         // --- Tables de référence (extraites du PDF PSTQ 2 juillet 2025) ---
@@ -602,7 +685,7 @@
             "dipqc_uni_2e_2ans_plus": 180,
             "dipqc_uni_med_2ans_plus": 200,
             "dipqc_uni_3e": 200,
-        ];
+        };
 
         const EXP_QC_TABLE = [
             {min: 0, max: 11, pts: 0},
@@ -725,7 +808,7 @@
             const offre = document.getElementById("offre").value;
             const autorisation = document.getElementById("autorisation").value;
 
-            // Conjoint
+            // Conjoint (optionnel)
             const conj_fr_co = Number(document.getElementById("conj_fr_co").value || 0);
             const conj_fr_po = Number(document.getElementById("conj_fr_po").value || 0);
             const conj_fr_ce = Number(document.getElementById("conj_fr_ce").value || 0);
@@ -755,7 +838,7 @@
             const total_besoins = pts_diag + pts_dipqc + pts_exp_qc + pts_res_hors + pts_offre + pts_autorisation;
             const total_global = total_capital + total_besoins;
 
-            // Calcul conjoint – sous-total indicatif
+            // Calcul conjoint (sous-total indicatif)
             let total_conjoint = 0;
             if (conjointPresent) {
                 const conj_pts_fr_co = getFrenchPoints(conj_fr_co, "Avec conjoint");
@@ -801,9 +884,8 @@
                 "Capital humain – d. Niveau de scolarité (tableau « Niveau de scolarité », max 130 / 110).");
 
             if (conjointPresent) {
-                addRow("Conjoint – français + scolarité + expérience au Québec (sous-total indicatif)",
-                    total_conjoint,
-                    "Facteurs liés au conjoint. Barèmes complets à vérifier dans les tableaux officiels du PSTQ.");
+                addRow("Conjoint – français + scolarité + expérience au Québec (sous-total indicatif)", total_conjoint,
+                    "Facteurs liés au conjoint (français, scolarité, expérience au Québec). Vérifiez les tableaux officiels du PSTQ pour le détail des barèmes.");
             }
 
             addRow("Diagnostic de main-d’œuvre + durée d’expérience dans la profession principale", pts_diag,
@@ -831,34 +913,4 @@
         });
         </script>
     </body>
-    <footer
-        style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.8rem; color: #555;">
-        <p><strong>Mentions légales</strong></p>
-        <p>
-            Ce simulateur est un outil non officiel fourni uniquement à titre
-            informatif.
-            Il n’est ni affilié ni approuvé par le Ministère de l’Immigration,
-            de la
-            Francisation et de l’Intégration (MIFI) ou tout autre organisme
-            gouvernemental.
-            Les résultats obtenus ne garantissent en aucun cas une invitation ou
-            une décision
-            d’immigration officielle.
-        </p>
-        <p>
-            Les barèmes, grilles et critères utilisés proviennent du document
-            <em>« Pointage – Programme de sélection des travailleurs qualifiés
-                (PSTQ) »</em>,
-            mis à jour le 2 juillet 2025 et publié sur le site du Gouvernement
-            du Québec :
-            <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq"
-                target="_blank">https://www.quebec.ca/immigration/travailler-quebec/pstq</a>.
-        </p>
-        <p>
-            Ce site ne collecte, ne conserve ni ne transmet aucune information
-            personnelle.
-            L’utilisation de ce simulateur se fait sous la seule responsabilité
-            de l’utilisateur.
-        </p>
-    </footer>
 </html>
