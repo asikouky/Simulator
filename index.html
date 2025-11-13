@@ -129,6 +129,7 @@
             gouvernement du Québec.
         </div>
 
+        <!-- 1. Informations de base -->
         <div class="card">
             <h2>1. Informations de base</h2>
             <fieldset>
@@ -152,6 +153,7 @@
             </fieldset>
         </div>
 
+        <!-- 2. Français requérant principal -->
         <div class="card">
             <h2>2. Connaissance du français (requérant principal)</h2>
             <fieldset>
@@ -184,8 +186,9 @@
             </fieldset>
         </div>
 
+        <!-- 3. Expérience + scolarité requérant principal -->
         <div class="card">
-            <h2>3. Expérience de travail et scolarité</h2>
+            <h2>3. Expérience de travail et scolarité (requérant principal)</h2>
             <fieldset>
                 <legend>Expérience totale (5 dernières années)</legend>
                 <label>
@@ -200,7 +203,7 @@
             <fieldset>
                 <legend>Niveau de scolarité</legend>
                 <label for="edu_code">
-                    Niveau de scolarité (choisis le plus avantageux)
+                    Niveau de scolarité (choisissez le plus avantageux)
                 </label>
                 <select id="edu_code">
                     <option value="sec_gen">Secondaire général complété</option>
@@ -235,138 +238,128 @@
                     <option value="uni_3e">Universitaire 3e cycle</option>
                 </select>
                 <small>Référence : Capital humain – <strong>d. Niveau de
-                        scolarité</strong>.
-                    Les valeurs exactes sont celles du tableau « Niveau de
-                    scolarité » (max 130 / 110).</small>
+                        scolarité</strong> (tableau « Niveau de
+                    scolarité », max 130 / 110).</small>
             </fieldset>
         </div>
 
-        <!-- NOUVELLE CARTE : Informations sur le conjoint -->
-        <div class="card">
-            <h2>4. Informations sur le conjoint (optionnel)</h2>
+        <!-- 4. Informations sur le conjoint (affichage conditionnel) -->
+        <div class="card" id="card-conjoint" style="display:none;">
+            <h2>4. Informations concernant le conjoint</h2>
             <p style="font-size:0.9rem;">
-                Si vous avez sélectionné <strong>« Avec conjoint »</strong>,
-                vous pouvez remplir
-                ces informations pour obtenir un sous-total indicatif pour le
-                conjoint.
-                Dans cette version, ce sous-total n’est pas encore intégré au
-                pointage global.
+                Cette section est pertinente seulement si vous avez sélectionné
+                <strong>« Avec conjoint »</strong> dans la situation familiale.
             </p>
 
             <fieldset>
                 <legend>Conjoint – connaissance du français</legend>
+
                 <label>
                     Compréhension orale (Échelle québécoise 1–12)
                     <input id="conj_fr_co" type="number" min="1" max="12"
                         value="10">
                 </label>
+
                 <label>
                     Production orale (Échelle québécoise 1–12)
                     <input id="conj_fr_po" type="number" min="1" max="12"
                         value="10">
                 </label>
+
                 <label>
                     Compréhension écrite (Échelle québécoise 1–12)
                     <input id="conj_fr_ce" type="number" min="1" max="12"
                         value="10">
                 </label>
+
                 <label>
                     Production écrite (Échelle québécoise 1–12)
                     <input id="conj_fr_pe" type="number" min="1" max="12"
                         value="10">
                 </label>
+
                 <small>
-                    Référence : Capital humain / facteurs d’adaptation –
-                    connaissance du français du conjoint.
-                    Barèmes complets :
+                    Référence : Facteurs liés au conjoint – connaissance du
+                    français.
+                    Barèmes détaillés :
                     <a
                         href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
-                        target="_blank">
-                        tableaux officiels du PSTQ
-                    </a>.
+                        target="_blank">PSTQ – pointage officiel</a>.
                 </small>
             </fieldset>
 
             <fieldset>
                 <legend>Conjoint – niveau de scolarité</legend>
-                <label for="conj_edu_code">
+                <label>
                     Niveau de scolarité du conjoint
+                    <select id="conj_edu_code">
+                        <option value>(Aucun / non déclaré)</option>
+                        <option value="sec_gen">Secondaire général
+                            complété</option>
+                        <option value="sec_prof_QC_600_899h">Secondaire
+                            professionnel 600–899h (Qc)</option>
+                        <option value="sec_prof_QC_900h_plus">Secondaire
+                            professionnel ≥ 900h (Qc)</option>
+                        <option value="sec_prof_horsQC_1an_plus">Secondaire
+                            professionnel ≥ 1 an (hors Qc)</option>
+                        <option value="postsec_gen_2ans">Postsecondaire général
+                            2
+                            ans</option>
+                        <option value="postsec_tech_QC_900h_plus">Postsecondaire
+                            technique ≥ 900h (Qc)</option>
+                        <option
+                            value="postsec_tech_horsQC_1_2ans">Postsecondaire
+                            technique 1–2 ans (hors Qc)</option>
+                        <option value="postsec_tech_3ans">Postsecondaire
+                            technique 3 ans</option>
+                        <option value="uni_1er_1an">Universitaire 1er cycle 1
+                            an</option>
+                        <option value="uni_1er_2ans">Universitaire 1er cycle 2
+                            ans</option>
+                        <option value="uni_1er_3_4ans">Universitaire 1er cycle
+                            3–4
+                            ans</option>
+                        <option value="uni_1er_5ans_plus">Universitaire 1er
+                            cycle 5
+                            ans ou plus</option>
+                        <option value="uni_2e_1an">Universitaire 2e cycle 1
+                            an</option>
+                        <option value="uni_2e_2ans_plus">Universitaire 2e cycle
+                            ≥ 2
+                            ans</option>
+                        <option value="uni_med_2ans_plus">Universitaire
+                            spécialisation médicale ≥ 2 ans</option>
+                        <option value="uni_3e">Universitaire 3e cycle</option>
+                    </select>
                 </label>
-                <select id="conj_edu_code">
-                    <option value>(Aucun / non déclaré)</option>
-                    <option value="sec_gen">Secondaire général complété</option>
-                    <option value="sec_prof_QC_600_899h">Secondaire
-                        professionnel 600–899h (Qc)</option>
-                    <option value="sec_prof_QC_900h_plus">Secondaire
-                        professionnel ≥ 900h (Qc)</option>
-                    <option value="sec_prof_horsQC_1an_plus">Secondaire
-                        professionnel ≥ 1 an (hors Qc)</option>
-                    <option value="postsec_gen_2ans">Postsecondaire général 2
-                        ans</option>
-                    <option value="postsec_tech_QC_900h_plus">Postsecondaire
-                        technique ≥ 900h (Qc)</option>
-                    <option value="postsec_tech_horsQC_1_2ans">Postsecondaire
-                        technique 1–2 ans (hors Qc)</option>
-                    <option value="postsec_tech_3ans">Postsecondaire technique 3
-                        ans</option>
-                    <option value="uni_1er_1an">Universitaire 1er cycle 1
-                        an</option>
-                    <option value="uni_1er_2ans">Universitaire 1er cycle 2
-                        ans</option>
-                    <option value="uni_1er_3_4ans">Universitaire 1er cycle 3–4
-                        ans</option>
-                    <option value="uni_1er_5ans_plus">Universitaire 1er cycle 5
-                        ans ou plus</option>
-                    <option value="uni_2e_1an">Universitaire 2e cycle 1
-                        an</option>
-                    <option value="uni_2e_2ans_plus">Universitaire 2e cycle ≥ 2
-                        ans</option>
-                    <option value="uni_med_2ans_plus">Universitaire
-                        spécialisation médicale ≥ 2 ans</option>
-                    <option value="uni_3e">Universitaire 3e cycle</option>
-                </select>
                 <small>
-                    Référence : Capital humain / facteurs d’adaptation –
-                    scolarité du conjoint.
-                    Les valeurs exactes figurent dans les tableaux officiels du
-                    PSTQ.
+                    Référence : Facteurs liés au conjoint – scolarité.
+                    Voir barèmes PSTQ pour la pondération exacte.
                 </small>
             </fieldset>
 
             <fieldset>
                 <legend>Conjoint – expérience de travail au Québec</legend>
                 <label>
-                    Durée d’expérience de travail au Québec du conjoint (mois,
-                    0–60)
+                    Durée d’expérience de travail au Québec (mois, 0–60)
                     <input id="conj_exp_qc" type="number" min="0" max="60"
                         value="0">
                 </label>
                 <small>
                     Référence : Facteurs d’adaptation – expérience de travail au
                     Québec du conjoint.
-                    Barèmes exacts :
-                    <a
-                        href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
-                        target="_blank">
-                        PSTQ – section facteurs d’adaptation
-                    </a>.
+                    Barèmes détaillés dans les tableaux PSTQ.
                 </small>
             </fieldset>
         </div>
 
+        <!-- 5. Réponse aux besoins du Québec -->
         <div class="card">
             <h2>5. Réponse aux besoins du Québec (partie)</h2>
 
             <fieldset>
                 <legend>Diagnostic de main-d’œuvre + expérience dans la
-                    profession principale
-                    <a
-                        href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
-                        target="_blank"
-                        style="font-size:0.75rem; margin-left:8px;">
-                        📄 Voir tableau officiel
-                    </a>
-                </legend>
+                    profession principale</legend>
                 <label>
                     Diagnostic de la profession principale
                     <select id="diag_code">
@@ -383,16 +376,13 @@
                     <input id="exp_prof" type="number" min="0" max="60"
                         value="24">
                 </label>
-                <small>Référence : Réponse aux besoins du Québec – <strong>a.
+                <small>
+                    Référence : Réponse aux besoins du Québec – <strong>a.
                         Diagnostic de main-d’œuvre et durée
                         de l’expérience dans la profession principale
-                        exercée</strong> (tableau par diagnostic et
-                    durée). Source :
-                    <a
-                        href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage"
-                        target="_blank">
-                        https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage
-                    </a>.
+                        exercée</strong>.
+                    Voir le tableau détaillé dans le document PSTQ (diagnostic ×
+                    durée).
                 </small>
             </fieldset>
 
@@ -516,7 +506,7 @@
                         <td>Total capital humain (simplifié)</td>
                         <td id="total_capital">0</td>
                         <td>Somme : français + âge + expérience totale +
-                            scolarité.</td>
+                            scolarité (requérant principal).</td>
                     </tr>
                     <tr class="total">
                         <td>Total réponse aux besoins du Québec (partiel)</td>
@@ -525,14 +515,16 @@
                             résidence hors CMM, offre, autorisation.</td>
                     </tr>
                     <tr class="total">
-                        <td>Sous-total conjoint (indicatif, non inclus)</td>
+                        <td>Sous-total conjoint (indicatif)</td>
                         <td id="total_conjoint">0</td>
                         <td>Français + scolarité + expérience au Québec du
-                            conjoint (approx., à valider avec les tableaux
+                            conjoint
+                            (approximation, à valider avec les barèmes
                             officiels).</td>
                     </tr>
                     <tr class="total">
-                        <td>Pointage total (sans facteurs d’adaptation)</td>
+                        <td>Pointage total (sans facteurs d’adaptation
+                            complets)</td>
                         <td id="total_global">0</td>
                         <td>À titre indicatif – ne remplace pas le calcul du
                             MIFI.</td>
@@ -541,58 +533,8 @@
             </table>
         </div>
 
-        <footer
-            style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.8rem; color: #555;">
-            <p><strong>Mentions légales</strong></p>
-            <p>
-                Ce simulateur est un outil non officiel fourni uniquement à
-                titre
-                informatif.
-                Il n’est ni affilié ni approuvé par le Ministère de
-                l’Immigration,
-                de la
-                Francisation et de l’Intégration (MIFI) ou tout autre organisme
-                gouvernemental.
-                Les résultats obtenus ne garantissent en aucun cas une
-                invitation ou
-                une décision
-                d’immigration officielle.
-            </p>
-            <p>
-                Les barèmes, grilles et critères utilisés proviennent du
-                document
-                <em>« Pointage – Programme de sélection des travailleurs
-                    qualifiés
-                    (PSTQ) »</em>,
-                mis à jour le 2 juillet 2025 et publié sur le site du
-                Gouvernement
-                du Québec :
-                <a
-                    href="https://www.quebec.ca/immigration/travailler-quebec/pstq"
-                    target="_blank">https://www.quebec.ca/immigration/travailler-quebec/pstq</a>.
-            </p>
-            <p>
-                La présente version du simulateur prend en compte l’impact de la
-                présence d’un <strong>époux ou conjoint de fait</strong> sur
-                certains
-                barèmes du requérant principal (âge, français, expérience,
-                scolarité),
-                et affiche un sous-total indicatif pour le conjoint. Pour une
-                évaluation complète, veuillez toujours vous
-                référer aux tableaux officiels du PSTQ.
-            </p>
-            <p>
-                Ce site ne collecte, ne conserve ni ne transmet aucune
-                information
-                personnelle.
-                L’utilisation de ce simulateur se fait sous la seule
-                responsabilité
-                de l’utilisateur.
-            </p>
-        </footer>
-
         <script>
-        // --- Tables de référence (extraites du PDF PSTQ 2 juillet 2025) ---
+        // --- Tables de référence (extraites / simplifiées du PSTQ 2 juillet 2025) ---
 
         const FRENCH_TABLE = [
             {min: 1, max: 4, seul: 0, conjoint: 0},
@@ -706,11 +648,11 @@
 
         const OFFRE_TABLE = {
             "aucune": 0,
-            "dans_CMM": 0, // selon le tableau : points réservés aux offres hors CMM
+            "dans_CMM": 0,
             "hors_CMM": 50
         };
 
-        // --- Fonctions utilitaires ---
+        // --- Utilitaires ---
 
         function isConjoint(famille) {
             return famille === "Avec conjoint";
@@ -782,6 +724,21 @@
             return yesNo === "oui" ? 50 : 0;
         }
 
+        // --- Affichage dynamique de la section conjoint ---
+
+        const familleSelect = document.getElementById("famille");
+        const conjointCard = document.getElementById("card-conjoint");
+
+        function updateConjointVisibility() {
+            if (familleSelect.value === "Avec conjoint") {
+                conjointCard.style.display = "block";
+            } else {
+                conjointCard.style.display = "none";
+            }
+        }
+        updateConjointVisibility();
+        familleSelect.addEventListener("change", updateConjointVisibility);
+
         // --- Calcul principal ---
 
         document.getElementById("btn_calc").addEventListener("click", () => {
@@ -808,7 +765,7 @@
             const offre = document.getElementById("offre").value;
             const autorisation = document.getElementById("autorisation").value;
 
-            // Conjoint (optionnel)
+            // Données conjoint
             const conj_fr_co = Number(document.getElementById("conj_fr_co").value || 0);
             const conj_fr_po = Number(document.getElementById("conj_fr_po").value || 0);
             const conj_fr_ce = Number(document.getElementById("conj_fr_ce").value || 0);
@@ -816,7 +773,7 @@
             const conj_edu_code = document.getElementById("conj_edu_code").value;
             const conj_exp_qc = Number(document.getElementById("conj_exp_qc").value || 0);
 
-            // Calculs requérant principal
+            // Requérant principal
             const pts_fr_co = getFrenchPoints(fr_co, famille);
             const pts_fr_po = getFrenchPoints(fr_po, famille);
             const pts_fr_ce = getFrenchPoints(fr_ce, famille);
@@ -838,7 +795,7 @@
             const total_besoins = pts_diag + pts_dipqc + pts_exp_qc + pts_res_hors + pts_offre + pts_autorisation;
             const total_global = total_capital + total_besoins;
 
-            // Calcul conjoint (sous-total indicatif)
+            // Conjoint – sous-total indicatif
             let total_conjoint = 0;
             if (conjointPresent) {
                 const conj_pts_fr_co = getFrenchPoints(conj_fr_co, "Avec conjoint");
@@ -880,12 +837,15 @@
             addRow("Durée totale de l’expérience de travail", pts_exp_total,
                 "Capital humain – c. Durée de l’expérience de travail (5 dernières années).");
 
-            addRow("Niveau de scolarité", pts_edu,
+            addRow("Niveau de scolarité (requérant principal)", pts_edu,
                 "Capital humain – d. Niveau de scolarité (tableau « Niveau de scolarité », max 130 / 110).");
 
             if (conjointPresent) {
-                addRow("Conjoint – français + scolarité + expérience au Québec (sous-total indicatif)", total_conjoint,
-                    "Facteurs liés au conjoint (français, scolarité, expérience au Québec). Vérifiez les tableaux officiels du PSTQ pour le détail des barèmes.");
+                addRow(
+                    "Conjoint – français + scolarité + expérience au Québec (sous-total indicatif)",
+                    total_conjoint,
+                    "Facteurs liés au conjoint – barèmes complets à vérifier dans le document PSTQ."
+                );
             }
 
             addRow("Diagnostic de main-d’œuvre + durée d’expérience dans la profession principale", pts_diag,
@@ -913,4 +873,34 @@
         });
         </script>
     </body>
+    <footer
+        style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.8rem; color: #555;">
+        <p><strong>Mentions légales</strong></p>
+        <p>
+            Ce simulateur est un outil non officiel fourni uniquement à titre
+            informatif.
+            Il n’est ni affilié ni approuvé par le Ministère de l’Immigration,
+            de la
+            Francisation et de l’Intégration (MIFI) ou tout autre organisme
+            gouvernemental.
+            Les résultats obtenus ne garantissent en aucun cas une invitation ou
+            une décision
+            d’immigration officielle.
+        </p>
+        <p>
+            Les barèmes, grilles et critères utilisés proviennent du document
+            <em>« Pointage – Programme de sélection des travailleurs qualifiés
+                (PSTQ) »</em>,
+            mis à jour le 2 juillet 2025 et publié sur le site du Gouvernement
+            du Québec :
+            <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq"
+                target="_blank">https://www.quebec.ca/immigration/travailler-quebec/pstq</a>.
+        </p>
+        <p>
+            Ce site ne collecte, ne conserve ni ne transmet aucune information
+            personnelle.
+            L’utilisation de ce simulateur se fait sous la seule responsabilité
+            de l’utilisateur.
+        </p>
+    </footer>
 </html>
