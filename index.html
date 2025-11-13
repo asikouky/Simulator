@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulateur PSTQ Québec (non officiel)</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            background: #f5f5f7;
+        }
+        h1, h2, h3 {
+            color: #222;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 0.8rem 1rem 1rem;
+            margin-bottom: 0.8rem;
+        }
+        legend {
+            padding: 0 0.4rem;
+            font-weight: 600;
+        }
+        label {
+            display: block;
+            margin-top: 0.35rem;
+            font-size: 0.9rem;
+        }
+        input[type="number"],
+        input[type="text"],
+        select {
+            width: 260px;
+            max-width: 100%;
+            padding: 0.25rem 0.4rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 0.1rem;
+            font-size: 0.9rem;
+        }
+        small {
+            display: block;
+            color: #666;
+            font-size: 0.75rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: none;
+            background: #2563eb;
+            color: #fff;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-top: 0.6rem;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 0.4rem 0.3rem;
+            vertical-align: top;
+        }
+        th {
+            text-align: left;
+            background: #f3f4f6;
+        }
+        .ref {
+            color: #555;
+            font-size: 0.75rem;
+        }
+        .total {
+            font-weight: 700;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.1rem 0.45rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            background: #e5e7eb;
+            color: #374151;
+            margin-left: 0.35rem;
+        }
+        .warning {
+            background: #fef3c7;
+            border: 1px solid #facc15;
+            color: #92400e;
+            border-radius: 8px;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.8rem;
+        }
+        .inline-code {
+            font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.8rem;
+            background: #e5e7eb;
+            padding: 0.05rem 0.25rem;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simulateur de pointage PSTQ Québec <span class="badge">Non officiel</span></h1>
+    <div class="card warning">
+        <strong>⚠️ Avertissement :</strong> ce simulateur est basé sur le document
+        <em>« Pointage – Programme de sélection des travailleurs qualifiés (PSTQ), mise à jour le 2 juillet 2025 »</em>.
+        Il est fourni à titre informatif seulement. <br>
+        Seul le calcul du Ministère de l’Immigration, de la Francisation et de l’Intégration (MIFI)
+        fait foi. Vérifiez toujours les critères officiels sur le site du gouvernement du Québec.
+    </div>
+
+    <div class="card">
+        <h2>1. Informations de base</h2>
+        <fieldset>
+            <legend>Situation</legend>
+            <label>
+                Situation familiale
+                <select id="famille">
+                    <option value="Seul">Seul</option>
+                    <option value="Avec conjoint">Avec conjoint</option>
+                </select>
+            </label>
+            <small>Référence : Capital humain – sous-groupes de pointage selon la présence d’un conjoint.</small>
+
+            <label>
+                Âge (en années)
+                <input id="age" type="number" min="18" max="99" value="28">
+            </label>
+            <small>Référence : Capital humain – <strong>b. Âge</strong>.</small>
+        </fieldset>
+    </div>
+
+    <div class="card">
+        <h2>2. Connaissance du français (requérant principal)</h2>
+        <fieldset>
+            <legend>Niveaux Échelle québécoise (1–12)</legend>
+
+            <label>
+                Compréhension orale
+                <input id="fr_co" type="number" min="1" max="12" value="10">
+            </label>
+
+            <label>
+                Production orale
+                <input id="fr_po" type="number" min="1" max="12" value="10">
+            </label>
+
+            <label>
+                Compréhension écrite
+                <input id="fr_ce" type="number" min="1" max="12" value="10">
+            </label>
+
+            <label>
+                Production écrite
+                <input id="fr_pe" type="number" min="1" max="12" value="10">
+            </label>
+
+            <small>Référence : Capital humain – <strong>a. Connaissance du français</strong>
+                (Échelle québécoise, 4 compétences, maximum 50 points par compétence).</small>
+        </fieldset>
+    </div>
+
+    <div class="card">
+        <h2>3. Expérience de travail et scolarité</h2>
+        <fieldset>
+            <legend>Expérience totale (5 dernières années)</legend>
+            <label>
+                Durée totale d’expérience de travail (mois, 0–60)
+                <input id="exp_total" type="number" min="0" max="60" value="36">
+            </label>
+            <small>Référence : Capital humain – <strong>c. Durée de l’expérience de travail</strong>.</small>
+        </fieldset>
+
+        <fieldset>
+            <legend>Niveau de scolarité</legend>
+            <label for="edu_code">
+                Niveau de scolarité (choisis le plus avantageux)
+            </label>
+            <select id="edu_code">
+                <option value="sec_gen">Secondaire général complété</option>
+                <option value="sec_prof_QC_600_899h">Secondaire professionnel 600–899h (Qc)</option>
+                <option value="sec_prof_QC_900h_plus">Secondaire professionnel ≥ 900h (Qc)</option>
+                <option value="sec_prof_horsQC_1an_plus">Secondaire professionnel ≥ 1 an (hors Qc)</option>
+                <option value="postsec_gen_2ans">Postsecondaire général 2 ans</option>
+                <option value="postsec_tech_QC_900h_plus">Postsecondaire technique ≥ 900h (Qc)</option>
+                <option value="postsec_tech_horsQC_1_2ans">Postsecondaire technique 1–2 ans (hors Qc)</option>
+                <option value="postsec_tech_3ans">Postsecondaire technique 3 ans</option>
+                <option value="uni_1er_1an">Universitaire 1er cycle 1 an</option>
+                <option value="uni_1er_2ans">Universitaire 1er cycle 2 ans</option>
+                <option value="uni_1er_3_4ans" selected>Universitaire 1er cycle 3–4 ans</option>
+                <option value="uni_1er_5ans_plus">Universitaire 1er cycle 5 ans ou plus</option>
+                <option value="uni_2e_1an">Universitaire 2e cycle 1 an</option>
+                <option value="uni_2e_2ans_plus">Universitaire 2e cycle ≥ 2 ans</option>
+                <option value="uni_med_2ans_plus">Universitaire spécialisation médicale ≥ 2 ans</option>
+                <option value="uni_3e">Universitaire 3e cycle</option>
+            </select>
+            <small>Référence : Capital humain – <strong>d. Niveau de scolarité</strong>.
+                Les valeurs exactes sont celles du tableau « Niveau de scolarité » (max 130 / 110).</small>
+        </fieldset>
+    </div>
+
+    <div class="card">
+        <h2>4. Réponse aux besoins du Québec (partie)</h2>
+
+        <fieldset>
+            <legend>Diagnostic de main-d’œuvre + expérience dans la profession principale</legend>
+            <label>
+                Diagnostic de la profession principale
+                <select id="diag_code">
+                    <option value="equilibre">Équilibre ou sans diagnostic</option>
+                    <option value="leger_deficit">Léger déficit</option>
+                    <option value="deficit">Déficit</option>
+                </select>
+            </label>
+
+            <label>
+                Durée d’expérience dans la profession principale (mois, 0–60)
+                <input id="exp_prof" type="number" min="0" max="60" value="24">
+            </label>
+            <small>Référence : Réponse aux besoins du Québec – <strong>a. Diagnostic de main-d’œuvre et durée
+                de l’expérience dans la profession principale exercée</strong> (tableau par diagnostic et durée).</small>
+        </fieldset>
+
+        <fieldset>
+            <legend>Diplôme du Québec</legend>
+            <label>
+                Diplôme du Québec le plus élevé obtenu
+                <select id="dipqc_code">
+                    <option value="">Aucun / diplôme hors Québec seulement</option>
+                    <option value="dipqc_sec_gen">Secondaire général complété (Qc)</option>
+                    <option value="dipqc_sec_prof_600_899h">Secondaire professionnel 600–899h (Qc)</option>
+                    <option value="dipqc_sec_prof_900h_plus">Secondaire professionnel ≥ 900h (Qc)</option>
+                    <option value="dipqc_postsec_gen_2ans">Post secondaire général 2 ans (Qc)</option>
+                    <option value="dipqc_postsec_tech_900h_plus">Postsecondaire technique ≥ 900h (Qc)</option>
+                    <option value="dipqc_postsec_tech_3ans">Postsecondaire technique 3 ans (Qc)</option>
+                    <option value="dipqc_uni_1er_1an">Universitaire 1er cycle 1 an (Qc)</option>
+                    <option value="dipqc_uni_1er_2ans">Universitaire 1er cycle 2 ans (Qc)</option>
+                    <option value="dipqc_uni_1er_3_4ans">Universitaire 1er cycle 3–4 ans (Qc)</option>
+                    <option value="dipqc_uni_1er_5ans_plus">Universitaire 1er cycle 5 ans ou plus (Qc)</option>
+                    <option value="dipqc_uni_2e_1an">Universitaire 2e cycle 1 an (Qc)</option>
+                    <option value="dipqc_uni_2e_2ans_plus">Universitaire 2e cycle ≥ 2 ans (Qc)</option>
+                    <option value="dipqc_uni_med_2ans_plus">Universitaire spécialisation médicale ≥ 2 ans (Qc)</option>
+                    <option value="dipqc_uni_3e">Universitaire 3e cycle (Qc)</option>
+                </select>
+            </label>
+            <small>Référence : Réponse aux besoins du Québec – <strong>b. Diplôme du Québec</strong> (max 200 points).</small>
+        </fieldset>
+
+        <fieldset>
+            <legend>Expérience de travail au Québec</legend>
+            <label>
+                Durée d’expérience de travail au Québec (mois, 0–60)
+                <input id="exp_qc" type="number" min="0" max="60" value="12">
+            </label>
+            <small>Référence : Réponse aux besoins du Québec – <strong>c. Durée de l’expérience de travail au Québec</strong>.</small>
+        </fieldset>
+
+        <fieldset>
+            <legend>Hors Communauté métropolitaine de Montréal (CMM)</legend>
+            <label>
+                Durée de résidence hors CMM (mois)
+                <input id="res_hors" type="number" min="0" max="240" value="0">
+            </label>
+            <small>Référence : Réponse aux besoins du Québec – <strong>d. Durée du séjour à l’extérieur du territoire
+                de la Communauté métropolitaine de Montréal – résidence</strong>.</small>
+        </fieldset>
+
+        <fieldset>
+            <legend>Offre d'emploi et autorisation</legend>
+            <label>
+                Offre d’emploi validée dans la profession principale
+                <select id="offre">
+                    <option value="aucune">Aucune</option>
+                    <option value="dans_CMM">Oui, dans la CMM</option>
+                    <option value="hors_CMM">Oui, hors CMM</option>
+                </select>
+            </label>
+            <small>Référence : Réponse aux besoins du Québec – <strong>e. Offre d'emploi validée dans la profession
+                principale, combiné au lieu de l'emploi</strong>.</small>
+
+            <label>
+                Autorisation d’exercer / reconnaissance de l’ordre professionnel au Québec ?
+                <select id="autorisation">
+                    <option value="non">Non</option>
+                    <option value="oui">Oui</option>
+                </select>
+            </label>
+            <small>Référence : Réponse aux besoins du Québec – <strong>f. Autorisation d’exercer la profession
+                principale au Québec ou reconnaissance partielle / complète</strong> (50 points).</small>
+        </fieldset>
+    </div>
+
+    <div class="card">
+        <button id="btn_calc">Calculer le pointage</button>
+    </div>
+
+    <div class="card">
+        <h2>Résultats</h2>
+        <table id="results-table">
+            <thead>
+                <tr>
+                    <th>Critère</th>
+                    <th>Points</th>
+                    <th>Référence (PSTQ, 2 juillet 2025)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rempli par JavaScript -->
+            </tbody>
+            <tfoot>
+                <tr class="total">
+                    <td>Total capital humain (simplifié)</td>
+                    <td id="total_capital">0</td>
+                    <td>Somme : français + âge + expérience totale + scolarité.</td>
+                </tr>
+                <tr class="total">
+                    <td>Total réponse aux besoins du Québec (partiel)</td>
+                    <td id="total_besoins">0</td>
+                    <td>Somme : diagnostic+exp, diplôme Qc, exp Qc, résidence hors CMM, offre, autorisation.</td>
+                </tr>
+                <tr class="total">
+                    <td>Pointage total (sans facteurs d’adaptation)</td>
+                    <td id="total_global">0</td>
+                    <td>À titre indicatif – ne remplace pas le calcul du MIFI.</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+        // --- Tables de référence (extraites du PDF PSTQ 2 juillet 2025) ---
+
+        const FRENCH_TABLE = [
+            {min: 1, max: 4, seul: 0, conjoint: 0},
+            {min: 5, max: 6, seul: 38, conjoint: 30},
+            {min: 7, max: 8, seul: 44, conjoint: 35},
+            {min: 9, max: 10, seul: 50, conjoint: 40},
+            {min: 11, max: 12, seul: 50, conjoint: 40},
+        ];
+
+        const AGE_TABLE = [
+            {min: 18, max: 19, seul: 110, conjoint: 90},
+            {min: 20, max: 30, seul: 120, conjoint: 100},
+            {min: 31, max: 31, seul: 110, conjoint: 95},
+            {min: 32, max: 32, seul: 100, conjoint: 90},
+            {min: 33, max: 33, seul: 90, conjoint: 81},
+            {min: 34, max: 34, seul: 80, conjoint: 72},
+            {min: 35, max: 35, seul: 75, conjoint: 68},
+            {min: 36, max: 36, seul: 70, conjoint: 63},
+            {min: 37, max: 37, seul: 65, conjoint: 59},
+            {min: 38, max: 38, seul: 60, conjoint: 54},
+            {min: 39, max: 39, seul: 55, conjoint: 50},
+            {min: 40, max: 40, seul: 50, conjoint: 45},
+            {min: 41, max: 41, seul: 40, conjoint: 36},
+            {min: 42, max: 42, seul: 30, conjoint: 27},
+            {min: 43, max: 43, seul: 20, conjoint: 18},
+            {min: 44, max: 44, seul: 10, conjoint: 9},
+            {min: 45, max: 120, seul: 0, conjoint: 0},
+        ];
+
+        const EXP_TOTAL_TABLE = [
+            {min: 0, max: 11, seul: 0, conjoint: 0},   // < 12 mois
+            {min: 12, max: 23, seul: 20, conjoint: 15},
+            {min: 24, max: 35, seul: 40, conjoint: 30},
+            {min: 36, max: 47, seul: 50, conjoint: 35},
+            {min: 48, max: 120, seul: 70, conjoint: 50},
+        ];
+
+        const EDUCATION_TABLE = {
+            "sec_gen": {label: "Secondaire général complété", seul: 13, conjoint: 11},
+            "sec_prof_QC_600_899h": {label: "Secondaire professionnel 600–899h (Qc)", seul: 13, conjoint: 11},
+            "sec_prof_QC_900h_plus": {label: "Secondaire professionnel ≥ 900h (Qc)", seul: 26, conjoint: 22},
+            "sec_prof_horsQC_1an_plus": {label: "Secondaire professionnel ≥ 1 an (hors Qc)", seul: 26, conjoint: 22},
+            "postsec_gen_2ans": {label: "Postsecondaire général 2 ans", seul: 39, conjoint: 33},
+            "postsec_tech_QC_900h_plus": {label: "Postsecondaire technique ≥ 900h (Qc)", seul: 52, conjoint: 44},
+            "postsec_tech_horsQC_1_2ans": {label: "Postsecondaire technique 1–2 ans (hors Qc)", seul: 52, conjoint: 44},
+            "postsec_tech_3ans": {label: "Postsecondaire technique 3 ans", seul: 78, conjoint: 66},
+            "uni_1er_1an": {label: "Universitaire 1er cycle 1 an", seul: 78, conjoint: 66},
+            "uni_1er_2ans": {label: "Universitaire 1er cycle 2 ans", seul: 91, conjoint: 77},
+            "uni_1er_3_4ans": {label: "Universitaire 1er cycle 3–4 ans", seul: 104, conjoint: 88},
+            "uni_1er_5ans_plus": {label: "Universitaire 1er cycle 5 ans ou plus", seul: 110, conjoint: 93},
+            "uni_2e_1an": {label: "Universitaire 2e cycle 1 an", seul: 110, conjoint: 93},
+            "uni_2e_2ans_plus": {label: "Universitaire 2e cycle ≥ 2 ans", seul: 117, conjoint: 99},
+            "uni_med_2ans_plus": {label: "Universitaire spécialisation médicale ≥ 2 ans", seul: 130, conjoint: 110},
+            "uni_3e": {label: "Universitaire 3e cycle", seul: 130, conjoint: 110},
+        };
+
+        const DIAG_TABLE = [
+            // équilibre/sans
+            {diag: "equilibre", min: 0, max: 11, pts: 0},
+            {diag: "equilibre", min: 12, max: 23, pts: 5},
+            {diag: "equilibre", min: 24, max: 35, pts: 10},
+            {diag: "equilibre", min: 36, max: 47, pts: 15},
+            {diag: "equilibre", min: 48, max: 60, pts: 25},
+            // léger déficit
+            {diag: "leger_deficit", min: 0, max: 11, pts: 0},
+            {diag: "leger_deficit", min: 12, max: 23, pts: 70},
+            {diag: "leger_deficit", min: 24, max: 35, pts: 80},
+            {diag: "leger_deficit", min: 36, max: 47, pts: 90},
+            {diag: "leger_deficit", min: 48, max: 60, pts: 100},
+            // déficit
+            {diag: "deficit", min: 0, max: 11, pts: 0},
+            {diag: "deficit", min: 12, max: 23, pts: 90},
+            {diag: "deficit", min: 24, max: 35, pts: 100},
+            {diag: "deficit", min: 36, max: 47, pts: 110},
+            {diag: "deficit", min: 48, max: 60, pts: 120},
+        ];
+
+        const DIPQC_TABLE = {
+            "dipqc_sec_gen": 20,
+            "dipqc_sec_prof_600_899h": 20,
+            "dipqc_sec_prof_900h_plus": 40,
+            "dipqc_postsec_gen_2ans": 60,
+            "dipqc_postsec_tech_900h_plus": 80,
+            "dipqc_postsec_tech_3ans": 120,
+            "dipqc_uni_1er_1an": 120,
+            "dipqc_uni_1er_2ans": 140,
+            "dipqc_uni_1er_3_4ans": 160,
+            "dipqc_uni_1er_5ans_plus": 170,
+            "dipqc_uni_2e_1an": 170,
+            "dipqc_uni_2e_2ans_plus": 180,
+            "dipqc_uni_med_2ans_plus": 200,
+            "dipqc_uni_3e": 200,
+        };
+
+        const EXP_QC_TABLE = [
+            {min: 0, max: 11, pts: 0},
+            {min: 12, max: 23, pts: 40},
+            {min: 24, max: 35, pts: 80},
+            {min: 36, max: 47, pts: 120},
+            {min: 48, max: 60, pts: 160},
+        ];
+
+        const RES_HORS_TABLE = [
+            {min: 0, max: 5, pts: 0},
+            {min: 6, max: 11, pts: 3},
+            {min: 12, max: 23, pts: 8},
+            {min: 24, max: 35, pts: 12},
+            {min: 36, max: 47, pts: 16},
+            {min: 48, max: 240, pts: 20},
+        ];
+
+        const OFFRE_TABLE = {
+            "aucune": 0,
+            "dans_CMM": 0, // selon le tableau : points réservés aux offres hors CMM
+            "hors_CMM": 50
+        };
+
+        // --- Fonctions utilitaires ---
+
+        function isConjoint(famille) {
+            return famille === "Avec conjoint";
+        }
+
+        function getRangePoints(table, value, hasConjoint, fieldSeul = "seul", fieldConjoint = "conjoint") {
+            for (const row of table) {
+                if (value >= row.min && value <= row.max) {
+                    return hasConjoint ? row[fieldConjoint] : row[fieldSeul];
+                }
+            }
+            return 0;
+        }
+
+        function getFrenchPoints(level, famille) {
+            const conjoint = isConjoint(famille);
+            return getRangePoints(FRENCH_TABLE, level, conjoint);
+        }
+
+        function getAgePoints(age, famille) {
+            const conjoint = isConjoint(famille);
+            return getRangePoints(AGE_TABLE, age, conjoint);
+        }
+
+        function getExpTotalPoints(mois, famille) {
+            const conjoint = isConjoint(famille);
+            return getRangePoints(EXP_TOTAL_TABLE, mois, conjoint);
+        }
+
+        function getEducationPoints(code, famille) {
+            const data = EDUCATION_TABLE[code];
+            if (!data) return 0;
+            return isConjoint(famille) ? data.conjoint : data.seul;
+        }
+
+        function getDiagPoints(diagCode, mois) {
+            for (const row of DIAG_TABLE) {
+                if (row.diag === diagCode && mois >= row.min && mois <= row.max) {
+                    return row.pts;
+                }
+            }
+            return 0;
+        }
+
+        function getDipQcPoints(code) {
+            if (!code) return 0;
+            return DIPQC_TABLE[code] || 0;
+        }
+
+        function getExpQcPoints(mois) {
+            for (const row of EXP_QC_TABLE) {
+                if (mois >= row.min && mois <= row.max) return row.pts;
+            }
+            return 0;
+        }
+
+        function getResHorsPoints(mois) {
+            for (const row of RES_HORS_TABLE) {
+                if (mois >= row.min && mois <= row.max) return row.pts;
+            }
+            return 0;
+        }
+
+        function getOffrePoints(code) {
+            return OFFRE_TABLE[code] ?? 0;
+        }
+
+        function getAutorisationPoints(yesNo) {
+            return yesNo === "oui" ? 50 : 0;
+        }
+
+        // --- Calcul principal ---
+
+        document.getElementById("btn_calc").addEventListener("click", () => {
+            const famille = document.getElementById("famille").value;
+            const age = Number(document.getElementById("age").value || 0);
+
+            const fr_co = Number(document.getElementById("fr_co").value || 0);
+            const fr_po = Number(document.getElementById("fr_po").value || 0);
+            const fr_ce = Number(document.getElementById("fr_ce").value || 0);
+            const fr_pe = Number(document.getElementById("fr_pe").value || 0);
+
+            const exp_total = Number(document.getElementById("exp_total").value || 0);
+            const edu_code = document.getElementById("edu_code").value;
+
+            const diag_code = document.getElementById("diag_code").value;
+            const exp_prof = Number(document.getElementById("exp_prof").value || 0);
+
+            const dipqc_code = document.getElementById("dipqc_code").value;
+            const exp_qc = Number(document.getElementById("exp_qc").value || 0);
+            const res_hors = Number(document.getElementById("res_hors").value || 0);
+
+            const offre = document.getElementById("offre").value;
+            const autorisation = document.getElementById("autorisation").value;
+
+            // Calculs
+            const pts_fr_co = getFrenchPoints(fr_co, famille);
+            const pts_fr_po = getFrenchPoints(fr_po, famille);
+            const pts_fr_ce = getFrenchPoints(fr_ce, famille);
+            const pts_fr_pe = getFrenchPoints(fr_pe, famille);
+            const total_fr = pts_fr_co + pts_fr_po + pts_fr_ce + pts_fr_pe;
+
+            const pts_age = getAgePoints(age, famille);
+            const pts_exp_total = getExpTotalPoints(exp_total, famille);
+            const pts_edu = getEducationPoints(edu_code, famille);
+
+            const pts_diag = getDiagPoints(diag_code, exp_prof);
+            const pts_dipqc = getDipQcPoints(dipqc_code);
+            const pts_exp_qc = getExpQcPoints(exp_qc);
+            const pts_res_hors = getResHorsPoints(res_hors);
+            const pts_offre = getOffrePoints(offre);
+            const pts_autorisation = getAutorisationPoints(autorisation);
+
+            const total_capital = total_fr + pts_age + pts_exp_total + pts_edu;
+            const total_besoins = pts_diag + pts_dipqc + pts_exp_qc + pts_res_hors + pts_offre + pts_autorisation;
+            const total_global = total_capital + total_besoins;
+
+            // Affichage
+            const tbody = document.querySelector("#results-table tbody");
+            tbody.innerHTML = "";
+
+            function addRow(label, points, ref) {
+                const tr = document.createElement("tr");
+                const td1 = document.createElement("td");
+                const td2 = document.createElement("td");
+                const td3 = document.createElement("td");
+                td1.textContent = label;
+                td2.textContent = points;
+                td3.innerHTML = `<span class="ref">${ref}</span>`;
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tbody.appendChild(tr);
+            }
+
+            addRow("Français – 4 compétences (requérant principal)", total_fr,
+                "Capital humain – a. Connaissance du français (4 compétences, maximum 50 points chacune).");
+
+            addRow("Âge", pts_age,
+                "Capital humain – b. Âge (pointage selon tranches d’âge et présence d’un conjoint).");
+
+            addRow("Durée totale de l’expérience de travail", pts_exp_total,
+                "Capital humain – c. Durée de l’expérience de travail (5 dernières années).");
+
+            addRow("Niveau de scolarité", pts_edu,
+                "Capital humain – d. Niveau de scolarité (tableau « Niveau de scolarité », max 130 / 110).");
+
+            addRow("Diagnostic de main-d’œuvre + durée d’expérience dans la profession principale", pts_diag,
+                "Réponse aux besoins du Québec – a. Diagnostic de main-d’œuvre et durée de l’expérience dans la profession principale exercée.");
+
+            addRow("Diplôme du Québec", pts_dipqc,
+                "Réponse aux besoins du Québec – b. Diplôme du Québec (tableau des diplômes du Québec, max 200).");
+
+            addRow("Durée de l’expérience de travail au Québec", pts_exp_qc,
+                "Réponse aux besoins du Québec – c. Durée de l’expérience de travail au Québec.");
+
+            addRow("Durée du séjour (résidence) hors CMM", pts_res_hors,
+                "Réponse aux besoins du Québec – d. Durée du séjour à l’extérieur du territoire de la CMM – résidence.");
+
+            addRow("Offre d’emploi validée (lieu de l’emploi)", pts_offre,
+                "Réponse aux besoins du Québec – e. Offre d’emploi validée dans la profession principale, combiné au lieu (dans / hors CMM).");
+
+            addRow("Autorisation d’exercer / reconnaissance de l’ordre professionnel", pts_autorisation,
+                "Réponse aux besoins du Québec – f. Autorisation d’exercer la profession principale ou reconnaissance (50 points).");
+
+            document.getElementById("total_capital").textContent = total_capital;
+            document.getElementById("total_besoins").textContent = total_besoins;
+            document.getElementById("total_global").textContent = total_global;
+        });
+    </script>
+</body>
+</html>
