@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Simulateur PSTQ Québec (non officiel)</title>
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <title>Simulateur PSTQ Québec (non officiel)</title>
+        <style>
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             max-width: 1100px;
@@ -112,254 +112,303 @@
             border-radius: 3px;
         }
     </style>
-</head>
-<body>
+    </head>
+    <body>
 
-    <h1>Simulateur de pointage PSTQ Québec <span class="badge">Non officiel</span></h1>
-    <div class="card warning">
-        <strong>⚠️ Avertissement :</strong> ce simulateur est basé sur le document
-        <em>« Pointage – Programme de sélection des travailleurs qualifiés (PSTQ), mise à jour le 2 juillet 2025 »</em>.
-        Il est fourni à titre informatif seulement. <br>
-        Seul le calcul du Ministère de l’Immigration, de la Francisation et de l’Intégration (MIFI)
-        fait foi. Vérifiez toujours les critères officiels sur le site du gouvernement du Québec.
-    </div>
+        <h1>Simulateur de pointage PSTQ Québec <span class="badge">Non
+                officiel</span></h1>
+        <div class="card warning">
+            <strong>⚠️ Avertissement :</strong> ce simulateur est basé sur le
+            document
+            <em>« Pointage – Programme de sélection des travailleurs qualifiés
+                (PSTQ), mise à jour le 2 juillet 2025 »</em>.
+            Il est fourni à titre informatif seulement. <br>
+            Seul le calcul du Ministère de l’Immigration, de la Francisation et
+            de l’Intégration (MIFI)
+            fait foi. Vérifiez toujours les critères officiels sur le site du
+            gouvernement du Québec.
+        </div>
 
-    <div class="card">
-        <h2>1. Informations de base</h2>
-        <fieldset>
-            <legend>Situation</legend>
-            <label>
-                Situation familiale
-                <select id="famille">
-                    <option value="Seul">Seul</option>
-                    <option value="Avec conjoint">Avec conjoint</option>
+        <div class="card">
+            <h2>1. Informations de base</h2>
+            <fieldset>
+                <legend>Situation</legend>
+                <label>
+                    Situation familiale
+                    <select id="famille">
+                        <option value="Seul">Seul</option>
+                        <option value="Avec conjoint">Avec conjoint</option>
+                    </select>
+                </label>
+                <small>Référence : Capital humain – sous-groupes de pointage
+                    selon la présence d’un conjoint.</small>
+
+                <label>
+                    Âge (en années)
+                    <input id="age" type="number" min="18" max="99" value="28">
+                </label>
+                <small>Référence : Capital humain – <strong>b.
+                        Âge</strong>.</small>
+            </fieldset>
+        </div>
+
+        <div class="card">
+            <h2>2. Connaissance du français (requérant principal)</h2>
+            <fieldset>
+                <legend>Niveaux Échelle québécoise (1–12)</legend>
+
+                <label>
+                    Compréhension orale
+                    <input id="fr_co" type="number" min="1" max="12" value="10">
+                </label>
+
+                <label>
+                    Production orale
+                    <input id="fr_po" type="number" min="1" max="12" value="10">
+                </label>
+
+                <label>
+                    Compréhension écrite
+                    <input id="fr_ce" type="number" min="1" max="12" value="10">
+                </label>
+
+                <label>
+                    Production écrite
+                    <input id="fr_pe" type="number" min="1" max="12" value="10">
+                </label>
+
+                <small>Référence : Capital humain – <strong>a. Connaissance du
+                        français</strong>
+                    (Échelle québécoise, 4 compétences, maximum 50 points par
+                    compétence).</small>
+            </fieldset>
+        </div>
+
+        <div class="card">
+            <h2>3. Expérience de travail et scolarité</h2>
+            <fieldset>
+                <legend>Expérience totale (5 dernières années)</legend>
+                <label>
+                    Durée totale d’expérience de travail (mois, 0–60)
+                    <input id="exp_total" type="number" min="0" max="60"
+                        value="36">
+                </label>
+                <small>Référence : Capital humain – <strong>c. Durée de
+                        l’expérience de travail</strong>.</small>
+            </fieldset>
+
+            <fieldset>
+                <legend>Niveau de scolarité</legend>
+                <label for="edu_code">
+                    Niveau de scolarité (choisis le plus avantageux)
+                </label>
+                <select id="edu_code">
+                    <option value="sec_gen">Secondaire général complété</option>
+                    <option value="sec_prof_QC_600_899h">Secondaire
+                        professionnel 600–899h (Qc)</option>
+                    <option value="sec_prof_QC_900h_plus">Secondaire
+                        professionnel ≥ 900h (Qc)</option>
+                    <option value="sec_prof_horsQC_1an_plus">Secondaire
+                        professionnel ≥ 1 an (hors Qc)</option>
+                    <option value="postsec_gen_2ans">Postsecondaire général 2
+                        ans</option>
+                    <option value="postsec_tech_QC_900h_plus">Postsecondaire
+                        technique ≥ 900h (Qc)</option>
+                    <option value="postsec_tech_horsQC_1_2ans">Postsecondaire
+                        technique 1–2 ans (hors Qc)</option>
+                    <option value="postsec_tech_3ans">Postsecondaire technique 3
+                        ans</option>
+                    <option value="uni_1er_1an">Universitaire 1er cycle 1
+                        an</option>
+                    <option value="uni_1er_2ans">Universitaire 1er cycle 2
+                        ans</option>
+                    <option value="uni_1er_3_4ans" selected>Universitaire 1er
+                        cycle 3–4 ans</option>
+                    <option value="uni_1er_5ans_plus">Universitaire 1er cycle 5
+                        ans ou plus</option>
+                    <option value="uni_2e_1an">Universitaire 2e cycle 1
+                        an</option>
+                    <option value="uni_2e_2ans_plus">Universitaire 2e cycle ≥ 2
+                        ans</option>
+                    <option value="uni_med_2ans_plus">Universitaire
+                        spécialisation médicale ≥ 2 ans</option>
+                    <option value="uni_3e">Universitaire 3e cycle</option>
                 </select>
-            </label>
-            <small>Référence : Capital humain – sous-groupes de pointage selon la présence d’un conjoint.</small>
+                <small>Référence : Capital humain – <strong>d. Niveau de
+                        scolarité</strong>.
+                    Les valeurs exactes sont celles du tableau « Niveau de
+                    scolarité » (max 130 / 110).</small>
+            </fieldset>
+        </div>
 
-            <label>
-                Âge (en années)
-                <input id="age" type="number" min="18" max="99" value="28">
-            </label>
-            <small>Référence : Capital humain – <strong>b. Âge</strong>.</small>
-        </fieldset>
-    </div>
+        <div class="card">
+            <h2>4. Réponse aux besoins du Québec (partie)</h2>
 
-    <div class="card">
-        <h2>2. Connaissance du français (requérant principal)</h2>
-        <fieldset>
-            <legend>Niveaux Échelle québécoise (1–12)</legend>
+            <fieldset>
+                <legend>Diagnostic de main-d’œuvre + expérience dans la
+                    profession principale</legend>
+                <label>
+                    Diagnostic de la profession principale
+                    <select id="diag_code">
+                        <option value="equilibre">Équilibre ou sans
+                            diagnostic</option>
+                        <option value="leger_deficit">Léger déficit</option>
+                        <option value="deficit">Déficit</option>
+                    </select>
+                </label>
 
-            <label>
-                Compréhension orale
-                <input id="fr_co" type="number" min="1" max="12" value="10">
-            </label>
+                <label>
+                    Durée d’expérience dans la profession principale (mois,
+                    0–60)
+                    <input id="exp_prof" type="number" min="0" max="60"
+                        value="24">
+                </label>
+                <small>Référence : Réponse aux besoins du Québec – <strong>a.
+                        Diagnostic de main-d’œuvre et durée
+                        de l’expérience dans la profession principale
+                        exercée</strong> (tableau par diagnostic et
+                    durée).</small>
+            </fieldset>
 
-            <label>
-                Production orale
-                <input id="fr_po" type="number" min="1" max="12" value="10">
-            </label>
+            <fieldset>
+                <legend>Diplôme du Québec</legend>
+                <label>
+                    Diplôme du Québec le plus élevé obtenu
+                    <select id="dipqc_code">
+                        <option value>Aucun / diplôme hors Québec
+                            seulement</option>
+                        <option value="dipqc_sec_gen">Secondaire général
+                            complété (Qc)</option>
+                        <option value="dipqc_sec_prof_600_899h">Secondaire
+                            professionnel 600–899h (Qc)</option>
+                        <option value="dipqc_sec_prof_900h_plus">Secondaire
+                            professionnel ≥ 900h (Qc)</option>
+                        <option value="dipqc_postsec_gen_2ans">Post secondaire
+                            général 2 ans (Qc)</option>
+                        <option
+                            value="dipqc_postsec_tech_900h_plus">Postsecondaire
+                            technique ≥ 900h (Qc)</option>
+                        <option value="dipqc_postsec_tech_3ans">Postsecondaire
+                            technique 3 ans (Qc)</option>
+                        <option value="dipqc_uni_1er_1an">Universitaire 1er
+                            cycle 1 an (Qc)</option>
+                        <option value="dipqc_uni_1er_2ans">Universitaire 1er
+                            cycle 2 ans (Qc)</option>
+                        <option value="dipqc_uni_1er_3_4ans">Universitaire 1er
+                            cycle 3–4 ans (Qc)</option>
+                        <option value="dipqc_uni_1er_5ans_plus">Universitaire
+                            1er cycle 5 ans ou plus (Qc)</option>
+                        <option value="dipqc_uni_2e_1an">Universitaire 2e cycle
+                            1 an (Qc)</option>
+                        <option value="dipqc_uni_2e_2ans_plus">Universitaire 2e
+                            cycle ≥ 2 ans (Qc)</option>
+                        <option value="dipqc_uni_med_2ans_plus">Universitaire
+                            spécialisation médicale ≥ 2 ans (Qc)</option>
+                        <option value="dipqc_uni_3e">Universitaire 3e cycle
+                            (Qc)</option>
+                    </select>
+                </label>
+                <small>Référence : Réponse aux besoins du Québec – <strong>b.
+                        Diplôme du Québec</strong> (max 200 points).</small>
+            </fieldset>
 
-            <label>
-                Compréhension écrite
-                <input id="fr_ce" type="number" min="1" max="12" value="10">
-            </label>
+            <fieldset>
+                <legend>Expérience de travail au Québec</legend>
+                <label>
+                    Durée d’expérience de travail au Québec (mois, 0–60)
+                    <input id="exp_qc" type="number" min="0" max="60"
+                        value="12">
+                </label>
+                <small>Référence : Réponse aux besoins du Québec – <strong>c.
+                        Durée de l’expérience de travail au
+                        Québec</strong>.</small>
+            </fieldset>
 
-            <label>
-                Production écrite
-                <input id="fr_pe" type="number" min="1" max="12" value="10">
-            </label>
+            <fieldset>
+                <legend>Hors Communauté métropolitaine de Montréal
+                    (CMM)</legend>
+                <label>
+                    Durée de résidence hors CMM (mois)
+                    <input id="res_hors" type="number" min="0" max="240"
+                        value="0">
+                </label>
+                <small>Référence : Réponse aux besoins du Québec – <strong>d.
+                        Durée du séjour à l’extérieur du territoire
+                        de la Communauté métropolitaine de Montréal –
+                        résidence</strong>.</small>
+            </fieldset>
 
-            <small>Référence : Capital humain – <strong>a. Connaissance du français</strong>
-                (Échelle québécoise, 4 compétences, maximum 50 points par compétence).</small>
-        </fieldset>
-    </div>
+            <fieldset>
+                <legend>Offre d'emploi et autorisation</legend>
+                <label>
+                    Offre d’emploi validée dans la profession principale
+                    <select id="offre">
+                        <option value="aucune">Aucune</option>
+                        <option value="dans_CMM">Oui, dans la CMM</option>
+                        <option value="hors_CMM">Oui, hors CMM</option>
+                    </select>
+                </label>
+                <small>Référence : Réponse aux besoins du Québec – <strong>e.
+                        Offre d'emploi validée dans la profession
+                        principale, combiné au lieu de
+                        l'emploi</strong>.</small>
 
-    <div class="card">
-        <h2>3. Expérience de travail et scolarité</h2>
-        <fieldset>
-            <legend>Expérience totale (5 dernières années)</legend>
-            <label>
-                Durée totale d’expérience de travail (mois, 0–60)
-                <input id="exp_total" type="number" min="0" max="60" value="36">
-            </label>
-            <small>Référence : Capital humain – <strong>c. Durée de l’expérience de travail</strong>.</small>
-        </fieldset>
+                <label>
+                    Autorisation d’exercer / reconnaissance de l’ordre
+                    professionnel au Québec ?
+                    <select id="autorisation">
+                        <option value="non">Non</option>
+                        <option value="oui">Oui</option>
+                    </select>
+                </label>
+                <small>Référence : Réponse aux besoins du Québec – <strong>f.
+                        Autorisation d’exercer la profession
+                        principale au Québec ou reconnaissance partielle /
+                        complète</strong> (50 points).</small>
+            </fieldset>
+        </div>
 
-        <fieldset>
-            <legend>Niveau de scolarité</legend>
-            <label for="edu_code">
-                Niveau de scolarité (choisis le plus avantageux)
-            </label>
-            <select id="edu_code">
-                <option value="sec_gen">Secondaire général complété</option>
-                <option value="sec_prof_QC_600_899h">Secondaire professionnel 600–899h (Qc)</option>
-                <option value="sec_prof_QC_900h_plus">Secondaire professionnel ≥ 900h (Qc)</option>
-                <option value="sec_prof_horsQC_1an_plus">Secondaire professionnel ≥ 1 an (hors Qc)</option>
-                <option value="postsec_gen_2ans">Postsecondaire général 2 ans</option>
-                <option value="postsec_tech_QC_900h_plus">Postsecondaire technique ≥ 900h (Qc)</option>
-                <option value="postsec_tech_horsQC_1_2ans">Postsecondaire technique 1–2 ans (hors Qc)</option>
-                <option value="postsec_tech_3ans">Postsecondaire technique 3 ans</option>
-                <option value="uni_1er_1an">Universitaire 1er cycle 1 an</option>
-                <option value="uni_1er_2ans">Universitaire 1er cycle 2 ans</option>
-                <option value="uni_1er_3_4ans" selected>Universitaire 1er cycle 3–4 ans</option>
-                <option value="uni_1er_5ans_plus">Universitaire 1er cycle 5 ans ou plus</option>
-                <option value="uni_2e_1an">Universitaire 2e cycle 1 an</option>
-                <option value="uni_2e_2ans_plus">Universitaire 2e cycle ≥ 2 ans</option>
-                <option value="uni_med_2ans_plus">Universitaire spécialisation médicale ≥ 2 ans</option>
-                <option value="uni_3e">Universitaire 3e cycle</option>
-            </select>
-            <small>Référence : Capital humain – <strong>d. Niveau de scolarité</strong>.
-                Les valeurs exactes sont celles du tableau « Niveau de scolarité » (max 130 / 110).</small>
-        </fieldset>
-    </div>
+        <div class="card">
+            <button id="btn_calc">Calculer le pointage</button>
+        </div>
 
-    <div class="card">
-        <h2>4. Réponse aux besoins du Québec (partie)</h2>
+        <div class="card">
+            <h2>Résultats</h2>
+            <table id="results-table">
+                <thead>
+                    <tr>
+                        <th>Critère</th>
+                        <th>Points</th>
+                        <th>Référence (PSTQ, 2 juillet 2025)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rempli par JavaScript -->
+                </tbody>
+                <tfoot>
+                    <tr class="total">
+                        <td>Total capital humain (simplifié)</td>
+                        <td id="total_capital">0</td>
+                        <td>Somme : français + âge + expérience totale +
+                            scolarité.</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Total réponse aux besoins du Québec (partiel)</td>
+                        <td id="total_besoins">0</td>
+                        <td>Somme : diagnostic+exp, diplôme Qc, exp Qc,
+                            résidence hors CMM, offre, autorisation.</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Pointage total (sans facteurs d’adaptation)</td>
+                        <td id="total_global">0</td>
+                        <td>À titre indicatif – ne remplace pas le calcul du
+                            MIFI.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
 
-        <fieldset>
-    <legend>
-        Diagnostic de main-d’œuvre + expérience dans la profession principale
-        <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage" 
-           target="_blank" 
-           style="font-size:0.75rem; margin-left:8px;">
-            📄 Voir tableau officiel
-        </a>
-    </legend>
-
-    <label>
-        Diagnostic de la profession principale
-        <select id="diag_code">
-            <option value="equilibre">Équilibre ou sans diagnostic</option>
-            <option value="leger_deficit">Léger déficit</option>
-            <option value="deficit">Déficit</option>
-        </select>
-    </label>
-
-    <label>
-        Durée d’expérience dans la profession principale (mois, 0–60)
-        <input id="exp_prof" type="number" min="0" max="60" value="24">
-    </label>
-
-    <small>
-        Référence : PSTQ – Réponse aux besoins du Québec, section « Diagnostic de main-d’œuvre
-        et durée de l’expérience dans la profession principale exercée ».
-        <br>
-        Source : 
-        <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage" target="_blank">
-            https://www.quebec.ca/immigration/travailler-quebec/pstq#pointage
-        </a>
-    </small>
-</fieldset>
-
-
-        <fieldset>
-            <legend>Diplôme du Québec</legend>
-            <label>
-                Diplôme du Québec le plus élevé obtenu
-                <select id="dipqc_code">
-                    <option value="">Aucun / diplôme hors Québec seulement</option>
-                    <option value="dipqc_sec_gen">Secondaire général complété (Qc)</option>
-                    <option value="dipqc_sec_prof_600_899h">Secondaire professionnel 600–899h (Qc)</option>
-                    <option value="dipqc_sec_prof_900h_plus">Secondaire professionnel ≥ 900h (Qc)</option>
-                    <option value="dipqc_postsec_gen_2ans">Post secondaire général 2 ans (Qc)</option>
-                    <option value="dipqc_postsec_tech_900h_plus">Postsecondaire technique ≥ 900h (Qc)</option>
-                    <option value="dipqc_postsec_tech_3ans">Postsecondaire technique 3 ans (Qc)</option>
-                    <option value="dipqc_uni_1er_1an">Universitaire 1er cycle 1 an (Qc)</option>
-                    <option value="dipqc_uni_1er_2ans">Universitaire 1er cycle 2 ans (Qc)</option>
-                    <option value="dipqc_uni_1er_3_4ans">Universitaire 1er cycle 3–4 ans (Qc)</option>
-                    <option value="dipqc_uni_1er_5ans_plus">Universitaire 1er cycle 5 ans ou plus (Qc)</option>
-                    <option value="dipqc_uni_2e_1an">Universitaire 2e cycle 1 an (Qc)</option>
-                    <option value="dipqc_uni_2e_2ans_plus">Universitaire 2e cycle ≥ 2 ans (Qc)</option>
-                    <option value="dipqc_uni_med_2ans_plus">Universitaire spécialisation médicale ≥ 2 ans (Qc)</option>
-                    <option value="dipqc_uni_3e">Universitaire 3e cycle (Qc)</option>
-                </select>
-            </label>
-            <small>Référence : Réponse aux besoins du Québec – <strong>b. Diplôme du Québec</strong> (max 200 points).</small>
-        </fieldset>
-
-        <fieldset>
-            <legend>Expérience de travail au Québec</legend>
-            <label>
-                Durée d’expérience de travail au Québec (mois, 0–60)
-                <input id="exp_qc" type="number" min="0" max="60" value="12">
-            </label>
-            <small>Référence : Réponse aux besoins du Québec – <strong>c. Durée de l’expérience de travail au Québec</strong>.</small>
-        </fieldset>
-
-        <fieldset>
-            <legend>Hors Communauté métropolitaine de Montréal (CMM)</legend>
-            <label>
-                Durée de résidence hors CMM (mois)
-                <input id="res_hors" type="number" min="0" max="240" value="0">
-            </label>
-            <small>Référence : Réponse aux besoins du Québec – <strong>d. Durée du séjour à l’extérieur du territoire
-                de la Communauté métropolitaine de Montréal – résidence</strong>.</small>
-        </fieldset>
-
-        <fieldset>
-            <legend>Offre d'emploi et autorisation</legend>
-            <label>
-                Offre d’emploi validée dans la profession principale
-                <select id="offre">
-                    <option value="aucune">Aucune</option>
-                    <option value="dans_CMM">Oui, dans la CMM</option>
-                    <option value="hors_CMM">Oui, hors CMM</option>
-                </select>
-            </label>
-            <small>Référence : Réponse aux besoins du Québec – <strong>e. Offre d'emploi validée dans la profession
-                principale, combiné au lieu de l'emploi</strong>.</small>
-
-            <label>
-                Autorisation d’exercer / reconnaissance de l’ordre professionnel au Québec ?
-                <select id="autorisation">
-                    <option value="non">Non</option>
-                    <option value="oui">Oui</option>
-                </select>
-            </label>
-            <small>Référence : Réponse aux besoins du Québec – <strong>f. Autorisation d’exercer la profession
-                principale au Québec ou reconnaissance partielle / complète</strong> (50 points).</small>
-        </fieldset>
-    </div>
-
-    <div class="card">
-        <button id="btn_calc">Calculer le pointage</button>
-    </div>
-
-    <div class="card">
-        <h2>Résultats</h2>
-        <table id="results-table">
-            <thead>
-                <tr>
-                    <th>Critère</th>
-                    <th>Points</th>
-                    <th>Référence (PSTQ, 2 juillet 2025)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Rempli par JavaScript -->
-            </tbody>
-            <tfoot>
-                <tr class="total">
-                    <td>Total capital humain (simplifié)</td>
-                    <td id="total_capital">0</td>
-                    <td>Somme : français + âge + expérience totale + scolarité.</td>
-                </tr>
-                <tr class="total">
-                    <td>Total réponse aux besoins du Québec (partiel)</td>
-                    <td id="total_besoins">0</td>
-                    <td>Somme : diagnostic+exp, diplôme Qc, exp Qc, résidence hors CMM, offre, autorisation.</td>
-                </tr>
-                <tr class="total">
-                    <td>Pointage total (sans facteurs d’adaptation)</td>
-                    <td id="total_global">0</td>
-                    <td>À titre indicatif – ne remplace pas le calcul du MIFI.</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-
-    <script>
+        <script>
         // --- Tables de référence (extraites du PDF PSTQ 2 juillet 2025) ---
 
         const FRENCH_TABLE = [
@@ -649,28 +698,35 @@
             document.getElementById("total_global").textContent = total_global;
         });
     </script>
-</body>
-
-<footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.8rem; color: #555;">
-    <p><strong>Mentions légales</strong></p>
-    <p>
-        Ce simulateur est un outil non officiel fourni uniquement à titre informatif. 
-        Il n’est ni affilié ni approuvé par le Ministère de l’Immigration, de la 
-        Francisation et de l’Intégration (MIFI) ou tout autre organisme gouvernemental. 
-        Les résultats obtenus ne garantissent en aucun cas une invitation ou une décision 
-        d’immigration officielle.
-    </p>
-    <p>
-        Les barèmes, grilles et critères utilisés proviennent du document 
-        <em>« Pointage – Programme de sélection des travailleurs qualifiés (PSTQ) »</em>, 
-        mis à jour le 2 juillet 2025 et publié sur le site du Gouvernement du Québec : 
-        <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq" 
-           target="_blank">https://www.quebec.ca/immigration/travailler-quebec/pstq</a>.
-    </p>
-    <p>
-        Ce site ne collecte, ne conserve ni ne transmet aucune information personnelle. 
-        L’utilisation de ce simulateur se fait sous la seule responsabilité de l’utilisateur.
-    </p>
-</footer>
-
+    </body>
+    <footer
+        style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.8rem; color: #555;">
+        <p><strong>Mentions légales</strong></p>
+        <p>
+            Ce simulateur est un outil non officiel fourni uniquement à titre
+            informatif.
+            Il n’est ni affilié ni approuvé par le Ministère de l’Immigration,
+            de la
+            Francisation et de l’Intégration (MIFI) ou tout autre organisme
+            gouvernemental.
+            Les résultats obtenus ne garantissent en aucun cas une invitation ou
+            une décision
+            d’immigration officielle.
+        </p>
+        <p>
+            Les barèmes, grilles et critères utilisés proviennent du document
+            <em>« Pointage – Programme de sélection des travailleurs qualifiés
+                (PSTQ) »</em>,
+            mis à jour le 2 juillet 2025 et publié sur le site du Gouvernement
+            du Québec :
+            <a href="https://www.quebec.ca/immigration/travailler-quebec/pstq"
+                target="_blank">https://www.quebec.ca/immigration/travailler-quebec/pstq</a>.
+        </p>
+        <p>
+            Ce site ne collecte, ne conserve ni ne transmet aucune information
+            personnelle.
+            L’utilisation de ce simulateur se fait sous la seule responsabilité
+            de l’utilisateur.
+        </p>
+    </footer>
 </html>
